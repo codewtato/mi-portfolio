@@ -1,0 +1,159 @@
+
+@media (max-width: 1024px) {
+    #apodo {
+        font-size: 15vh;
+        right: -1rem; 
+    }
+    #hero hr {
+    width: min(20vw, 100rem);
+    margin: 0;
+    border: 0;
+    border-top: 1px solid rgba(229, 220, 207, 0.9);
+    }
+}
+
+#hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 1.2rem 1.5rem 2rem 1.5rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    overflow: hidden;
+}
+
+#particulas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: calc(1.5rem + min(80vw, 80rem));
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+    mask-image: linear-gradient(to right, transparent 0%, black 15%);
+}
+.hero-top,
+.hero-copy {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-top {
+    margin-top: 0.3rem;
+}
+
+#hero hr {
+    width: min(80vw, 200rem);
+    margin: 0;
+    border: 0;
+    border-top: 1px solid rgba(229, 220, 207, 0.9);
+}
+
+.hero-copy {
+    max-width: 62rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.8rem;
+}
+
+#hero h1 {
+    margin: 0;
+    font-size: clamp(4rem, 4vw, 5.5rem);
+    line-height: 0.76;
+    letter-spacing: -0.04em;
+    color: var(--cremita);
+}
+
+#nombre {
+    margin: 0 0 0.5rem !important;
+    font-size: clamp(1.5rem, 0.8vw, 1.3rem);
+    line-height: 0.9;
+}
+
+#hero p {
+    margin: 0;
+}
+
+.descripcion-hero {
+    max-width: 58rem;
+    font-size: clamp(1rem, 1.1vw, 1.3rem);
+    line-height: 1.45;
+    color: rgba(229, 220, 207, 0.9);
+    margin: 0;
+}
+
+.descripcion-wrapper {
+    position: relative;
+}
+
+.descripcion-fantasma {
+    position: absolute;
+    font-size: clamp(1rem, 1.1vw, 2rem);
+    top: 40px;
+    left: 30px;
+    z-index: -1;
+    filter: blur(4px);
+    opacity: 0.8;
+}
+
+.descripcion-capsula {
+    background: rgba(15, 15, 15, 0.4);
+    box-shadow: 0 0 30px rgba(74, 74, 74, 0.15), inset 0 0 10px rgba(34, 34, 34, 0.35);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(1px);
+}
+/* .hero-contacto {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.9rem;
+    align-items: center;
+    justify-content: start;
+    width: fit-content;
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+} */
+
+
+#apodo {
+    font-size: 43vh; 
+    
+    line-height: 1.10;
+    transform: translateX(15%);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    writing-mode: vertical-lr;
+    font-family: var(--bold);
+    
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.044);
+}
+
+#apodo::before {
+    content: "TATO";
+    position: absolute;
+    left: 0; 
+    top: 0;
+    pointer-events: none;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--cremita);
+    
+    -webkit-mask-image: radial-gradient(
+        circle 200px at var(--mouse-x, -1000px) var(--mouse-y, -1000px), 
+        black 0%, 
+        transparent 70%
+    );
+    mask-image: radial-gradient(
+        circle 200px at var(--mouse-x, -1000px) var(--mouse-y, -1000px), 
+        black 0%, 
+        transparent 70%
+    );
+}
+

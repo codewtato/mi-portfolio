@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Portafolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Castoro:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <section id="hero" class="cremita">
+        <canvas id="particulas" aria-hidden="true"></canvas>
+
+        <div class="hero-top">
+          <p id="nombre" class="castoro-regular">Matias<br />D' Agostino</p>
+          <hr />
+        </div>
+
+        <div class="hero-copy">
+          <h1 class="cal-sans-regular">Desarrollador<br />Full-Stack</h1>
+          
+          <div class="descripcion-wrapper">
+            
+            <p class="castoro-regular descripcion-fantasma" aria-hidden="true">
+              Soy Matias, desarrollador Full-Stack radicado en Paraná, Técnico Universitario en
+              Programación (UTN). Me dedico a transformar ideas en plataformas web robustas y
+              escalables. Mi enfoque está en construir el ecosistema completo: desde APIs sólidas
+              en el backend hasta interfaces modernas e interactivas.
+            </p>
+            
+            <div class="descripcion-capsula">
+              <p class="castoro-regular descripcion-hero">
+                Soy Matias, desarrollador Full-Stack radicado en Paraná, Técnico Universitario en
+                Programación (UTN). Me dedico a transformar ideas en plataformas web robustas y
+                escalables. Mi enfoque está en construir el ecosistema completo: desde APIs sólidas
+                en el backend hasta interfaces modernas e interactivas.
+              </p>
+            </div>
+            
+          </div>
+
+        </div>
+
+        <div class="contenedor-contacto"></div>
+        <div id="apodo">TATO</div>
+      </section>
+      
+      <section id="stack">
+        <div class="stack-top">
+          <h1 id="titulo-stack" class="cal-sans-regular stack-original">Stack Tecnologico</h1>
+          <h1 id="titulo-copia" class="cal-sans-regular stack-copia" aria-hidden="true">Stack Tecnologico</h1>
+          <div id="contenedor-cajas"></div>
+        </div>
+        <div class="contenedor-contacto"></div>
+      </section>
+      <section id="proyectos">
+        <div class="contenedor-contacto"></div>
+      </section>
+      <footer id="footer-form">
+        <div class="contenedor-contacto"></div>
+      </footer>
+    </main>
+    
+    <script type="module" src="./src/ts/main.ts"></script>
+    <div class="capsula" aria-hidden="true"></div>
+  </body>
+</html>

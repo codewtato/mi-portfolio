@@ -1,0 +1,110 @@
+@media (max-width: 1024px) {
+    #contenedor-cajas {
+        flex-direction: column;
+    }
+
+    .tarjeta-stack {
+        width: 85vw !important;
+        margin-bottom: 8vw;
+    }
+}
+
+#stack {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: var(--cremita);
+    overflow: hidden;
+    padding: 10vh 5vw; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stack-top {
+    color: var(--negro);
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+#titulo-stack,
+#titulo-copia {
+    grid-area: 1 / 1;
+    margin: 0;
+    font-size: clamp(3rem, 4vw, 5.5rem);
+}
+
+#titulo-stack {
+    position: relative;
+    z-index: 2;
+}
+
+#titulo-copia {
+    z-index: 1;
+    transform: scale(1.35);
+    filter: blur(10px);
+    opacity: 0.8;
+    color: var(--negro);
+    pointer-events: none;
+}
+
+#contenedor-cajas {
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.tarjeta-stack {
+    background-color: var(--negro);
+    border-radius: 1.5rem;
+    width: 22vw;
+    min-height: 45vh;
+    padding: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.tarjeta-stack:hover {
+    transform: translateY(-10px) scale(1.02); /* Sube y se agranda un pelito */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* Sombra suave abajo */
+    border-color: rgba(255, 255, 255, 0.15); /* El borde se ilumina */
+}
+
+.tarjeta-stack h3 {
+    color: var(--cremita);
+    font-size: 1.4rem;
+    text-align: center;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tarjeta-stack p {
+    color: rgba(229, 220, 207, 0.7);
+    font-size: 0.95rem;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.contenedor-pastillas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.contenedor-pastillas img {
+    height: 26px;
+    border-radius: 4px;
+}
