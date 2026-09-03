@@ -10,6 +10,10 @@
     border: 0;
     border-top: 1px solid rgba(229, 220, 207, 0.9);
     }
+
+    #hero h1 {
+    font-size: clamp(3rem, 3vw, 4.5rem);
+}
 }
 
 #hero {
