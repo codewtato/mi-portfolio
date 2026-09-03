@@ -68,8 +68,8 @@ body {
     right: 2%;
     top: 35%;
     
-    width: 50px;
-    height: 160px;
+    width: 20px;
+    height: 100px;
     
     border-radius: 99px;
     background-color: rgba(229, 220, 207, 0.85);
@@ -141,4 +141,26 @@ body {
 .contacto--oscuro p:nth-child(odd),
 .contacto--oscuro p:nth-child(even) {
     color: var(--negro);
+}
+
+body.modo-ahorro .capsula {
+    display: none !important;
+}
+
+body.modo-ahorro #apodo,
+body.modo-ahorro #apodo::before,
+body.modo-ahorro #apodo::after,
+body.modo-ahorro #apodo * {
+    animation: none !important;
+    transition: none !important;
+}
+
+body.modo-ahorro #particulas {
+    animation: none !important;
+}
+
+@media (max-width: 768px) {
+  #apodo {
+    display: none;
+  }
 }

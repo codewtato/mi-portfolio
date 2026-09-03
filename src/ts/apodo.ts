@@ -1,6 +1,9 @@
 const apodo = document.getElementById('apodo');
 
-if (apodo) {
+const nucleosCPU = navigator.hardwareConcurrency || 4;
+const esPCViejita = (nucleosCPU <= 4 || window.innerWidth <= 768);
+
+if (apodo && !esPCViejita) {
   apodo.addEventListener('mousemove', (e: MouseEvent) => {
     const x = e.offsetX;
     const y = e.offsetY;

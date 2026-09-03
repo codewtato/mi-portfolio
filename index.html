@@ -1,70 +1,137 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Portafolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Castoro:ital@0;1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./src/css/styles.css" />
-  </head>
-  <body>
-    <main>
-      <section id="hero" class="cremita">
-        <canvas id="particulas" aria-hidden="true"></canvas>
 
-        <div class="hero-top">
-          <p id="nombre" class="castoro-regular">Matias<br />D' Agostino</p>
-          <hr />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Portafolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Castoro:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./src/css/styles.css" />
+</head>
 
-        <div class="hero-copy">
-          <h1 class="cal-sans-regular">Desarrollador<br />Full-Stack</h1>
-          
-          <div class="descripcion-wrapper">
-            
-            <p class="castoro-regular descripcion-fantasma" aria-hidden="true">
+<body>
+  <main>
+    <section id="hero" class="cremita">
+      <canvas id="particulas" aria-hidden="true"></canvas>
+
+      <div class="hero-top">
+        <p id="nombre" class="castoro-regular">Matias<br />D' Agostino</p>
+        <hr />
+      </div>
+
+      <div class="hero-copy">
+        <h1 class="cal-sans-regular">Desarrollador<br />Full-Stack</h1>
+
+        <div class="descripcion-wrapper">
+
+          <p class="castoro-regular descripcion-fantasma" aria-hidden="true">
+            Soy Matias, desarrollador Full-Stack radicado en Paraná, Técnico Universitario en
+            Programación (UTN). Me dedico a transformar ideas en plataformas web robustas y
+            escalables. Mi enfoque está en construir el ecosistema completo: desde APIs sólidas
+            en el backend hasta interfaces modernas e interactivas.
+          </p>
+
+          <div class="descripcion-capsula">
+            <p class="castoro-regular descripcion-hero">
               Soy Matias, desarrollador Full-Stack radicado en Paraná, Técnico Universitario en
               Programación (UTN). Me dedico a transformar ideas en plataformas web robustas y
               escalables. Mi enfoque está en construir el ecosistema completo: desde APIs sólidas
               en el backend hasta interfaces modernas e interactivas.
             </p>
-            
-            <div class="descripcion-capsula">
-              <p class="castoro-regular descripcion-hero">
-                Soy Matias, desarrollador Full-Stack radicado en Paraná, Técnico Universitario en
-                Programación (UTN). Me dedico a transformar ideas en plataformas web robustas y
-                escalables. Mi enfoque está en construir el ecosistema completo: desde APIs sólidas
-                en el backend hasta interfaces modernas e interactivas.
-              </p>
-            </div>
-            
           </div>
 
         </div>
 
-        <div class="contenedor-contacto"></div>
-        <div id="apodo">TATO</div>
-      </section>
-      
-      <section id="stack">
-        <div class="stack-top">
-          <h1 id="titulo-stack" class="cal-sans-regular stack-original">Stack Tecnologico</h1>
-          <h1 id="titulo-copia" class="cal-sans-regular stack-copia" aria-hidden="true">Stack Tecnologico</h1>
-          <div id="contenedor-cajas"></div>
+      </div>
+
+      <div class="contenedor-contacto"></div>
+      <div id="apodo">TATO</div>
+    </section>
+
+    <section id="stack">
+      <div class="stack-top">
+        <h1 id="titulo-stack" class="cal-sans-regular stack-original">Stack Tecnologico</h1>
+        <h1 id="titulo-copia" class="cal-sans-regular stack-copia" aria-hidden="true">Stack Tecnologico</h1>
+        <div id="contenedor-cajas">
+          <div class="tarjeta-stack">
+            <h3>Backend & Análisis de Datos</h3>
+            <p>Desarrollo de APIs robustas, modelado de bases de datos relacionales y no relacionales.</p>
+            <div class="contenedor-pastillas">
+              <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white"
+                alt="Java">
+              <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=flat&logo=spring&logoColor=white"
+                alt="Spring">
+              <img src="https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54"
+                alt="Python">
+              <img src="https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi" alt="FastAPI">
+              <img src="https://img.shields.io/badge/node.js-6DA55F?style=flat&logo=node.js&logoColor=white"
+                alt="Node.js">
+              <img src="https://img.shields.io/badge/r-%23276DC3.svg?style=flat&logo=r&logoColor=white" alt="R">
+              <img src="https://img.shields.io/badge/mysql-%2300000f.svg?style=flat&logo=mysql&logoColor=white"
+                alt="MySQL">
+              <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white"
+                alt="MongoDB">
+            </div>
+          </div>
+
+          <div class="tarjeta-stack">
+            <h3>Frontend</h3>
+            <p>Creación de interfaces web modernas, responsivas e interactivas utilizando arquitecturas modulares y
+              tipado estricto.</p>
+            <div class="contenedor-pastillas">
+              <img
+                src="https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E"
+                alt="JavaScript">
+              <img
+                src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white"
+                alt="TypeScript">
+              <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB"
+                alt="React">
+              <img
+                src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white"
+                alt="TailwindCSS">
+              <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white"
+                alt="HTML5">
+              <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white"
+                alt="Vite">
+              <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white"
+                alt="CSS3">
+            </div>
+          </div>
+
+          <div class="tarjeta-stack">
+            <h3>Herramientas y Gestión</h3>
+            <p>Administración de entornos Linux, control de versiones fluido y trabajo bajo metodologías ágiles
+              (Sprints) para entregas continuas.</p>
+            <div class="contenedor-pastillas">
+              <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux">
+              <img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" alt="Git">
+              <img src="https://img.shields.io/badge/bash-%23121011.svg?style=flat&logo=gnu-bash&logoColor=white"
+                alt="Bash">
+              <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=flat&logo=jira&logoColor=white"
+                alt="Jira">
+              <img src="https://img.shields.io/badge/Trello-%23026AA7.svg?style=flat&logo=Trello&logoColor=white"
+                alt="Trello">
+              <img src="https://img.shields.io/badge/Scrum-22A5F1?style=flat&logo=scrum&logoColor=white" alt="Scrum">
+            </div>
+          </div>
         </div>
-        <div class="contenedor-contacto"></div>
-      </section>
-      <section id="proyectos">
-        <div class="contenedor-contacto"></div>
-      </section>
-      <footer id="footer-form">
-        <div class="contenedor-contacto"></div>
-      </footer>
-    </main>
-    
-    <script type="module" src="./src/ts/main.ts"></script>
-    <div class="capsula" aria-hidden="true"></div>
-  </body>
+      </div>
+      <div class="contenedor-contacto"></div>
+    </section>
+    <section id="proyectos">
+      <div class="contenedor-contacto"></div>
+    </section>
+    <footer id="footer-form">
+      <div class="contenedor-contacto"></div>
+    </footer>
+  </main>
+
+  <script type="module" src="./src/ts/main.ts"></script>
+  <div class="capsula" aria-hidden="true"></div>
+</body>
+
 </html>
