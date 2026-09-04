@@ -7,6 +7,14 @@
         width: 85vw !important;
         margin-bottom: 8vw;
     }
+
+    #stack {
+        line-height: 0.8;
+    }
+
+    #contenedor-cajas {
+        gap: 0;
+    }
 }
 
 #stack {
