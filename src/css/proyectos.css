@@ -10,6 +10,19 @@
     align-items: center;
 }
 
+#particulas-proyectos {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(50vw, 44rem);
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
+    mask-image: linear-gradient(to right, transparent 0%, black 30%);
+}
+
 .proyectos-top {
     position: relative;
     z-index: 1;
@@ -28,17 +41,25 @@
 }
 
 .proyectos-stickers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;
 }
 
 .sticker {
-    height: clamp(70px, 10vw, 110px);
+    height: clamp(90px, 11vw, 190px);
     width: auto;
     overflow: visible;
     transition: transform 0.3s ease;
+}
+
+.sticker:not(:first-child) {
+    margin-left: -1.2vw;
 }
 
 .sticker-fantasma {

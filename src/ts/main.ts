@@ -1,4 +1,5 @@
 import './particulas';
+import './particulas-proyectos.ts';
 import './apodo.ts';
 import './scroll.ts';
 import './footer-form.ts';

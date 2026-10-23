@@ -13,15 +13,17 @@
 
 .marca-fondo {
     position: absolute;
-    left: -2vw;
-    bottom: -8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: -12vh;
     z-index: 0;
     margin: 0;
-    font-size: clamp(8rem, 28vw, 22rem);
+    font-size: clamp(10rem, 42vw, 48rem);
     line-height: 1;
     letter-spacing: -0.03em;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(15, 15, 17, 0.35);
+    color: var(--negro);
+    filter: blur(12px);
     pointer-events: none;
     user-select: none;
 }
