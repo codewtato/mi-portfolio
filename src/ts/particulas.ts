@@ -19,33 +19,6 @@ if (!modoAhorro && canvas) {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // El desenfoque se precalcula una sola vez sobre un sprite reutilizable.
-    // Aplicar ctx.filter = 'blur()' por particula y por frame es muy costoso
-    // en CPU; con drawImage el costo pasa a ser casi gratis.
-    const RADIO_SPRITE = 450; // cubre el radiusX maximo posible (150 + 300)
-    const MARGEN_BLUR = 100;
-    const TAMANIO_SPRITE = (RADIO_SPRITE + MARGEN_BLUR) * 2;
-
-    const sprite = document.createElement('canvas');
-    sprite.width = TAMANIO_SPRITE;
-    sprite.height = TAMANIO_SPRITE;
-    const spriteCtx = sprite.getContext('2d');
-
-    if (spriteCtx) {
-      const centro = TAMANIO_SPRITE / 2;
-      spriteCtx.filter = 'blur(25px)';
-
-      const gradient = spriteCtx.createRadialGradient(centro, centro, 0, centro, centro, RADIO_SPRITE);
-      gradient.addColorStop(0, 'rgb(255, 196, 85)');
-      gradient.addColorStop(0.4, 'rgb(249, 156, 94)');
-      gradient.addColorStop(1, 'rgba(255, 80, 0, 0.0)');
-
-      spriteCtx.fillStyle = gradient;
-      spriteCtx.beginPath();
-      spriteCtx.arc(centro, centro, RADIO_SPRITE, 0, Math.PI * 2);
-      spriteCtx.fill();
-    }
-
     class Particle {
       x: number;
       y: number;
@@ -97,14 +70,21 @@ if (!modoAhorro && canvas) {
         ctx.rotate(this.rotation);
         ctx.globalAlpha = this.alpha;
 
+        ctx.filter = 'blur(25px)';
+
         const scaleY = this.radiusY / this.radiusX;
         ctx.scale(1, scaleY);
 
-        // Nunca se agranda el sprite mas alla de su resolucion nativa, solo se achica
-        const escalaSprite = this.radiusX / RADIO_SPRITE;
-        const lado = TAMANIO_SPRITE * escalaSprite;
-        ctx.drawImage(sprite, -lado / 2, -lado / 2, lado, lado);
+        const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.radiusX);
 
+        gradient.addColorStop(0, 'rgb(255, 196, 85)');
+        gradient.addColorStop(0.4, 'rgb(249, 156, 94)');
+        gradient.addColorStop(1, 'rgba(255, 80, 0, 0.0)');
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(0, 0, this.radiusX, 0, Math.PI * 2);
+        ctx.fill();
         ctx.restore();
       }
     }
