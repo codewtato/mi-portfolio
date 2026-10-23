@@ -49,17 +49,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: clamp(0.75rem, 2.5vw, 2rem);
+    flex-wrap: wrap;
+}
+
+/* Cada sticker es su propio item clickeable: representa un proyecto aparte,
+   no un bloque decorativo unico. */
+.proyecto-item {
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .sticker {
+    display: block;
     height: clamp(90px, 11vw, 190px);
     width: auto;
     overflow: visible;
-    transition: transform 0.3s ease;
-}
-
-.sticker:not(:first-child) {
-    margin-left: -1.2vw;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .sticker-fantasma {
@@ -78,8 +87,16 @@
     transform: rotate(10deg);
 }
 
-.proyectos-stickers:hover .sticker {
-    transform: rotate(0deg) translateY(-6px);
+.proyecto-item:hover .sticker,
+.proyecto-item:focus-visible .sticker {
+    transform: rotate(0deg) translateY(-10px) scale(1.08);
+    filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.35));
+}
+
+.proyecto-item:focus-visible {
+    outline: 2px solid var(--cremita);
+    outline-offset: 4px;
+    border-radius: 1rem;
 }
 
 @media (max-width: 1024px) {

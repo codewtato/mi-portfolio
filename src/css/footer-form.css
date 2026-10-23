@@ -14,9 +14,11 @@
 .marca-fondo {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    /* El desplazamiento es un porcentaje del alto propio del texto (no vh),
+       asi se ve igual sin importar cuanto crezca la seccion con el formulario */
+    transform: translate(-50%, 38%);
     white-space: nowrap;
-    bottom: -12vh;
     z-index: 0;
     margin: 0;
     font-size: clamp(10rem, 42vw, 48rem);
