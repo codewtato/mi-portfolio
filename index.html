@@ -1,313 +1,570 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matias D' Agostino | Portafolio</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Castoro:ital@0;1&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./src/css/styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F1F1EE">
+<style>:root{padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
+<meta name="description" content="Desarrollador Full-Stack de Paraná, Argentina. Creador de Teire, una app gratuita para organizar tu día. APIs, bases de datos e interfaces.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://matiasdagostino.me/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Matías D'Agostino">
+<meta property="og:title" content="Matías D'Agostino, Desarrollador Full-Stack">
+<meta property="og:description" content="Desarrollador Full-Stack de Paraná, Argentina. Creador de Teire, una app gratuita para organizar tu día. APIs, bases de datos e interfaces.">
+<meta property="og:url" content="https://matiasdagostino.me/">
+<meta property="og:locale" content="es_AR">
+<meta property="og:image" content="https://matiasdagostino.me/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://matiasdagostino.me/og.png">
+<title>Matías D'Agostino, Desarrollador Full-Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&display=swap">
+<style>
+/* Layout: one committed light world (warm grey paper, black, one electric violet). 12-column grid is visible in the hero;
+   sections are ruled cells. Teire is the featured project on an ink block, the rest is an index. */
+:root{
+  --paper:#F1F1EE; --ink:#0B0B0B; --vio:#5A2BFF; --dim:#5C5C58; --rule:#0B0B0B;
+  --f:'Familjen Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:20}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--vio);outline-offset:3px}
+.tei :focus-visible{outline-color:#fff}
+.contact :focus-visible{outline-color:#fff}
+.page{container-type:inline-size;max-width:1600px;margin-inline:auto}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section[id]{scroll-margin-top:56px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--paper);padding:10px 16px;z-index:60;border-radius:999px}
+.skip:focus{left:16px}
+
+/* preloader (outside .page so fixed is relative to the viewport) */
+.pre{position:fixed;inset:0;z-index:50;background:var(--ink);color:var(--paper);display:flex;align-items:flex-end;justify-content:space-between;padding:clamp(16px,3vw,32px);transition:transform .8s cubic-bezier(.76,0,.24,1)}
+.pre.done{transform:translateY(-101%)}
+.pre[hidden]{display:none}
+.pre b{font-weight:700;font-size:clamp(90px,26vw,360px);line-height:.8;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.pre span{font-size:15px;font-weight:500;margin-bottom:.4em}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--paper);border-bottom:1.5px solid var(--ink);display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:12px;font-weight:600;font-size:15px}
+.nav .links{display:flex;align-items:center;gap:clamp(12px,3vw,34px)}
+.nav a{text-decoration:none;position:relative;padding-block:2px}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--vio);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.nav a:hover::after{transform:scaleX(1)}
+.lang{font:600 13px/1 var(--f);background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);border:0;border-radius:999px;padding:8px 12px;cursor:pointer;transition:background .2s,color .2s}
+.lang:hover{background:var(--ink);color:var(--paper)}
+@media (max-width:620px){.nav .links{font-size:13px}.nav .name{display:none}.nav{justify-content:flex-end}}
+
+/* hero */
+.hero{position:relative;min-height:clamp(560px,min(62cqw,calc(100svh - 56px)),760px);padding-block:clamp(16px,3cqw,32px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-bottom:1.5px solid var(--ink);background-image:repeating-linear-gradient(90deg,rgba(11,11,11,.08) 0 1px,transparent 1px calc(100%/12))}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-top,.hero h1,.hero-foot{position:relative}
+.hero-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:600;font-size:clamp(13px,1.5cqw,15px);pointer-events:none}
+.hero-top span:last-child{font-variant-numeric:tabular-nums}
+.hero h1{margin:0;font-weight:700;font-size:clamp(56px,12.4cqw,190px);line-height:.88;letter-spacing:-.055em;pointer-events:none}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.hero-foot p{margin:0;max-width:38ch;font-size:clamp(15px,1.9cqw,20px);font-weight:500;line-height:1.35;pointer-events:none}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:var(--vio);color:#fff;font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px;text-decoration:none;transition:background .2s,color .2s}
+.chip.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.chip.line:hover{background:var(--ink);color:var(--paper)}
+a.chip:not(.line):hover{background:var(--ink)}
+
+/* section head */
+.sec{border-bottom:1.5px solid var(--ink)}
+.sec-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;padding-block:clamp(28px,5cqw,64px) clamp(16px,2.6cqw,32px);align-items:end}
+.sec-head h2{grid-column:1/9;margin:0;font-weight:700;font-size:clamp(36px,8.4cqw,120px);line-height:.88;letter-spacing:-.055em}
+.sec-head p{grid-column:9/13;margin:0;color:var(--dim);font-size:clamp(14px,1.5cqw,16px);max-width:34ch}
+@media (max-width:760px){.sec-head h2,.sec-head p{grid-column:1/-1}}
+
+/* teire */
+.tei{background:var(--ink);color:var(--paper);border-bottom:1.5px solid var(--ink)}
+.tei-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:clamp(18px,3cqw,32px);font-weight:600;font-size:clamp(13px,1.5cqw,15px)}
+.tei-top span:first-child{display:inline-flex;align-items:center;gap:10px;color:#B7A6FF}
+.tei-top img{width:26px;height:26px;border-radius:7px}
+.tei-word{margin:clamp(8px,2cqw,24px) 0 0;font-weight:700;font-size:clamp(110px,31cqw,480px);line-height:.76;letter-spacing:-.075em;padding-bottom:.04em}
+.tei-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,3cqw,40px);padding-block:clamp(24px,4cqw,56px) clamp(24px,4cqw,48px);border-top:1px solid #3A3A3A;margin-top:clamp(16px,3cqw,40px)}
+.tei-lead{grid-column:1/8;margin:0;font-size:clamp(24px,3.6cqw,50px);line-height:1.06;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
+.tei-grid .chips{grid-column:1/8}
+.tei-facts{grid-column:9/13;grid-row:1/3;margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px;align-content:start;font-size:clamp(14px,1.5cqw,16px)}
+.tei-facts dt{color:#9A9A95}
+.tei-facts dd{margin:0}
+.tei .chip.line{color:var(--paper);box-shadow:inset 0 0 0 1.5px var(--paper)}
+.tei .chip.line:hover{background:var(--paper);color:var(--ink)}
+.tei .chip:not(.line):hover{background:var(--paper);color:var(--ink)}
+.vid{position:relative;margin:0;border:1px solid #3A3A3A;border-radius:10px;overflow:hidden;background:#06080A}
+.vid video,.vid img{display:block;width:100%;height:auto;aspect-ratio:1000/470}
+.vbtn{position:absolute;right:12px;bottom:12px;font:600 13px/1 var(--f);color:#fff;background:rgba(11,11,11,.7);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:9px 14px;cursor:pointer;transition:background .2s}
+.vbtn:hover{background:rgba(11,11,11,.95)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(24px,4cqw,56px);border-top:1px solid #3A3A3A}
+.stat{padding:clamp(16px,2.4cqw,32px) clamp(12px,2cqw,28px) clamp(18px,3cqw,36px);display:flex;flex-direction:column;gap:6px}
+.stat:not(:first-child){border-left:1px solid #3A3A3A}
+.stat:first-child{padding-left:0}
+.stat b{font-weight:700;font-size:clamp(44px,8cqw,112px);line-height:.9;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+.stat span{color:#A5A5A0;font-size:clamp(13px,1.45cqw,15px);max-width:22ch}
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #3A3A3A}
+.feat div{padding:clamp(16px,2.6cqw,32px) clamp(0px,.5cqw,8px) clamp(18px,3cqw,36px);border-bottom:1px solid #3A3A3A;display:flex;flex-direction:column;gap:6px}
+.feat div:not(:nth-child(3n+1)){padding-left:clamp(14px,2.6cqw,32px);border-left:1px solid #3A3A3A}
+.feat h3{margin:0;font-size:clamp(18px,2.4cqw,28px);font-weight:600;letter-spacing:-.025em;line-height:1.1}
+.feat p{margin:0;color:#A5A5A0;font-size:clamp(13px,1.45cqw,15px);max-width:34ch}
+.pepi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4cqw,32px);align-items:start;padding-block:clamp(24px,4cqw,48px) clamp(28px,5cqw,64px)}
+.pepi figure{margin:0;display:flex;flex-direction:column;gap:12px}
+.pepi img{display:block;width:100%;height:auto}
+.pepi figcaption{color:#A5A5A0;font-size:clamp(13px,1.45cqw,15px)}
+@media (max-width:760px){
+  .tei-lead,.tei-grid .chips{grid-column:1/-1}
+  .tei-facts{grid-column:1/-1;grid-row:auto}
+  .feat{grid-template-columns:1fr}
+  .feat div:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(odd){border-left:0;padding-left:0}
+  .stat:nth-child(n+3){border-top:1px solid #3A3A3A}
+  .pepi{grid-template-columns:1fr}
+}
+
+/* github strip */
+.gh-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:clamp(18px,3cqw,32px);font-size:clamp(16px,2cqw,22px);font-weight:600;letter-spacing:-.02em}
+
+/* about */
+.about{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;padding-bottom:clamp(36px,6cqw,80px)}
+.about .lead{grid-column:1/8;margin:0 0 clamp(18px,3cqw,36px);font-size:clamp(24px,3.7cqw,52px);line-height:1.06;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
+.about .body{grid-column:1/7;margin:0;color:var(--dim);font-size:clamp(15px,1.7cqw,18px);line-height:1.55;max-width:54ch}
+.now{grid-column:8/13;grid-row:1/3;margin:0;display:grid;grid-template-columns:auto 1fr;gap:0;align-content:start;border-top:1.5px solid var(--ink)}
+.now dt,.now dd{padding:14px 0;border-bottom:1px solid var(--ink);margin:0}
+.now dt{font-weight:600;padding-right:24px}
+@media (max-width:760px){.about .lead,.about .body{grid-column:1/-1}.now{grid-column:1/-1;grid-row:auto;margin-top:16px}}
+
+/* stack cells */
+.cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.cell{padding:clamp(18px,3cqw,36px) clamp(16px,3cqw,32px) clamp(28px,5cqw,56px);border-right:1.5px solid var(--ink);min-height:clamp(180px,24cqw,300px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:background .25s,color .25s}
+.cell:first-child{padding-left:max(16px,env(safe-area-inset-left,0px))}
+.cell:last-child{border-right:0;padding-right:max(16px,env(safe-area-inset-right,0px))}
+.cell:hover{background:var(--ink);color:var(--paper)}
+.cell h3{margin:0;font-weight:700;font-size:clamp(24px,3.6cqw,44px);letter-spacing:-.04em;line-height:1}
+.cell p{margin:0 0 10px;font-size:clamp(14px,1.55cqw,16px);line-height:1.45;max-width:30ch}
+.cell ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 12px;font-weight:600;font-size:clamp(14px,1.55cqw,16px)}
+.cell:hover p{color:#C9C9C4}
+@media (max-width:760px){.cells{grid-template-columns:1fr}.cell{border-right:0;border-bottom:1.5px solid var(--ink);min-height:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}.cell:last-child{border-bottom:0}}
+
+/* contact */
+.contact{background:var(--vio);color:#fff}
+.contact-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(20px,3cqw,40px);padding-block:clamp(36px,7cqw,96px)}
+.contact h2{grid-column:1/-1;margin:0;font-weight:700;font-size:clamp(44px,13cqw,200px);line-height:.84;letter-spacing:-.06em}
+.info{grid-column:1/6;display:flex;flex-direction:column;gap:18px;font-size:clamp(16px,1.9cqw,20px);min-width:0}
+.info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px}
+.info dt{opacity:.8}.info dd{margin:0;word-break:break-word;min-width:0}
+.info dd a{text-underline-offset:3px}
+.copy{font:600 14px/1 var(--f);color:var(--vio);background:#fff;border:0;border-radius:999px;padding:10px 16px;cursor:pointer;align-self:flex-start;transition:background .2s,color .2s}
+.copy:hover{background:var(--ink);color:#fff}
+.form{grid-column:7/13;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-width:0}
+.form label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;min-width:0}
+.form .full{grid-column:1/-1}
+.form input,.form textarea{font:inherit;font-size:16px;color:#fff;background:transparent;border:0;border-bottom:1.5px solid rgba(255,255,255,.75);padding:8px 0;border-radius:0;outline-offset:4px;width:100%}
+.form textarea{min-height:110px;resize:vertical}
+.form input[aria-invalid="true"],.form textarea[aria-invalid="true"]{border-bottom-color:#FFD27A;border-bottom-width:3px}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.actions{grid-column:1/-1;display:flex;gap:12px;flex-wrap:wrap}
+.send{font:700 16px/1 var(--f);background:var(--ink);color:#fff;border:0;border-radius:999px;padding:16px 28px;cursor:pointer;transition:background .2s,color .2s}
+.wa{font:700 16px/1 var(--f);background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff;border:0;border-radius:999px;padding:16px 28px;cursor:pointer;transition:background .2s,color .2s}
+.wa:hover{background:#fff;color:var(--vio)}
+.send:hover:not(:disabled){background:#fff;color:var(--vio)}
+.send:disabled{opacity:.6;cursor:progress}
+.status{grid-column:1/-1;margin:0;font-size:16px;font-weight:500;min-height:1.5em}
+@media (max-width:860px){.info,.form{grid-column:1/-1}.form{grid-template-columns:1fr}}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;font-size:14px;font-weight:500;background:var(--ink);color:var(--paper)}
+.foot span:last-child{font-variant-numeric:tabular-nums}
+</style>
 </head>
-
 <body>
+<a class="skip" href="#proyectos" data-t="skip">Saltar al contenido</a>
+<div class="pre" id="pre" hidden aria-hidden="true"><span data-t="loading">Cargando portfolio</span><b id="preNum">0</b></div>
+
+<div class="page">
+  <nav class="nav pad" aria-label="Principal">
+    <span class="name">Matías D'Agostino</span>
+    <span class="links">
+      <a href="#proyectos" data-t="nav_proj">Proyectos</a>
+      <a href="#sobre-mi" data-t="nav_about">Sobre mí</a>
+      <a href="#stack" data-t="nav_stack">Stack</a>
+      <a href="#contacto" data-t="nav_contact">Contacto</a>
+      <button type="button" class="lang" id="lang" aria-label="Switch to English">EN</button>
+    </span>
+  </nav>
+
+  <header class="hero pad" id="hero">
+    <canvas id="dots" aria-hidden="true"></canvas>
+    <div class="hero-top"><span>Matías D'Agostino</span><span>Paraná, 31.73 S, 60.53 O</span></div>
+    <h1><span data-t="h1a">Desarrollador</span><br><span data-t="h1b">Full-Stack</span></h1>
+    <div class="hero-foot">
+      <p data-t="hero_p">Backend, bases de datos e interfaces. Mi app Teire ya se descarga en Windows, Linux y Android.</p>
+      <div class="chips"><a class="chip" href="#proyectos" data-t="cta_proj">Ver proyectos</a><a class="chip line" href="#contacto" data-t="cta_contact">Contactarme</a></div>
+    </div>
+  </header>
+
   <main>
-    <section id="hero" class="cremita">
-      <canvas id="particulas" aria-hidden="true"></canvas>
-
-      <div class="hero-top">
-        <p id="nombre" class="castoro-regular">Matias<br />D' Agostino</p>
-        <hr />
+    <section class="sec" id="proyectos" style="border-bottom:0">
+      <div class="pad">
+        <div class="sec-head"><h2 data-t="proj_h">Proyectos</h2><p data-t="proj_p">Mi proyecto principal, publicado y en uso. El código está en GitHub.</p></div>
       </div>
-
-      <div class="hero-copy">
-        <h1 class="cal-sans-regular">Desarrollador<br />Full-Stack</h1>
-
-        <div class="descripcion-wrapper">
-
-          <p class="castoro-regular descripcion-fantasma" aria-hidden="true">
-            Soy Matias, desarrollador Full-Stack radicado en Paraná, Técnico Universitario en
-            Programación (UTN). Me dedico a transformar ideas en plataformas web robustas y
-            escalables. Mi enfoque está en construir el ecosistema completo: desde APIs sólidas
-            en el backend hasta interfaces modernas e interactivas.
-          </p>
-
-          <div class="descripcion-capsula">
-            <p class="castoro-regular descripcion-hero">
-              Soy Matias, desarrollador Full-Stack radicado en Paraná, Técnico Universitario en
-              Programación (UTN). Me dedico a transformar ideas en plataformas web robustas y
-              escalables. Mi enfoque está en construir el ecosistema completo: desde APIs sólidas
-              en el backend hasta interfaces modernas e interactivas.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="contenedor-contacto"></div>
-      <div id="apodo">TATO</div>
     </section>
 
-    <section id="stack">
-      <div class="stack-top">
-        <h1 id="titulo-stack" class="cal-sans-regular stack-original">Stack Tecnologico</h1>
-        <h1 id="titulo-copia" class="cal-sans-regular stack-copia" aria-hidden="true">Stack Tecnologico</h1>
-        <div id="contenedor-cajas">
-          <div class="tarjeta-stack">
-            <h3>Backend & Análisis de Datos</h3>
-            <p>Desarrollo de APIs robustas, modelado de bases de datos relacionales y no relacionales.</p>
-            <div class="contenedor-pastillas">
-              <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white"
-                alt="Java">
-              <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=flat&logo=spring&logoColor=white"
-                alt="Spring">
-              <img src="https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54"
-                alt="Python">
-              <img src="https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi" alt="FastAPI">
-              <img src="https://img.shields.io/badge/node.js-6DA55F?style=flat&logo=node.js&logoColor=white"
-                alt="Node.js">
-              <img src="https://img.shields.io/badge/r-%23276DC3.svg?style=flat&logo=r&logoColor=white" alt="R">
-              <img src="https://img.shields.io/badge/mysql-%2300000f.svg?style=flat&logo=mysql&logoColor=white"
-                alt="MySQL">
-              <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white"
-                alt="MongoDB">
-            </div>
-          </div>
+    <section class="tei" aria-labelledby="teire-h">
+      <div class="pad">
+        <div class="tei-top"><span><img src="/media/teire-icono.svg" alt="" width="26" height="26"><span data-t="tei_label">Proyecto destacado</span></span><a href="https://useteire.app" target="_blank" rel="noopener">useteire.app</a></div>
+        <h3 class="tei-word" id="teire-h">Teire</h3>
+        <div class="tei-grid">
+          <p class="tei-lead" data-t="tei_lead">Una app gratuita para organizar tu día y compartirlo con tu gente.</p>
+          <div class="chips"><a class="chip" href="https://useteire.app" target="_blank" rel="noopener" data-t="tei_visit">Visitar Teire</a><a class="chip line" href="https://github.com/codewtato/teire-descargas" target="_blank" rel="noopener" data-t="tei_dl">Descargas en GitHub</a></div>
+          <dl class="tei-facts">
+            <dt data-t="fk1">Plataformas</dt><dd data-t="fv1">Windows, Linux, Android e iPhone</dd>
+            <dt data-t="fk2">Tecnología</dt><dd>Tauri</dd>
+            <dt data-t="fk3">Precio</dt><dd data-t="fv3">Gratis, sin publicidad</dd>
+            <dt data-t="fk4">Mi rol</dt><dd data-t="fv4">Diseño, desarrollo y publicación, yo solo</dd>
+          </dl>
+        </div>
 
-          <div class="tarjeta-stack">
-            <h3>Frontend</h3>
-            <p>Creación de interfaces web modernas, responsivas e interactivas utilizando arquitecturas modulares y
-              tipado estricto.</p>
-            <div class="contenedor-pastillas">
-              <img
-                src="https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E"
-                alt="JavaScript">
-              <img
-                src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white"
-                alt="TypeScript">
-              <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB"
-                alt="React">
-              <img
-                src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white"
-                alt="TailwindCSS">
-              <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white"
-                alt="HTML5">
-              <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white"
-                alt="Vite">
-              <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white"
-                alt="CSS3">
-            </div>
-          </div>
+        <figure class="vid">
+          <video id="isla" autoplay muted loop playsinline preload="metadata" poster="/media/isla-cerrada-escena.webp" data-t-aria="vid_alt" aria-label="La isla de Teire en el escritorio de Windows, abriéndose y cambiando de pestaña">
+            <source src="/media/isla-en-accion.webm" type="video/webm">
+            <source src="/media/isla-en-accion.mp4" type="video/mp4">
+          </video>
+          <img id="islaStill" src="/media/isla-musica.webp" alt="" hidden width="1000" height="470">
+          <button type="button" class="vbtn" id="vbtn" data-t="vid_pause">Pausar video</button>
+        </figure>
 
-          <div class="tarjeta-stack">
-            <h3>Herramientas y Gestión</h3>
-            <p>Administración de entornos Linux, control de versiones fluido y trabajo bajo metodologías ágiles
-              (Sprints) para entregas continuas.</p>
-            <div class="contenedor-pastillas">
-              <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux">
-              <img src="https://img.shields.io/badge/git-%23F05033.svg?style=flat&logo=git&logoColor=white" alt="Git">
-              <img src="https://img.shields.io/badge/bash-%23121011.svg?style=flat&logo=gnu-bash&logoColor=white"
-                alt="Bash">
-              <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=flat&logo=jira&logoColor=white"
-                alt="Jira">
-              <img src="https://img.shields.io/badge/Trello-%23026AA7.svg?style=flat&logo=Trello&logoColor=white"
-                alt="Trello">
-              <img src="https://img.shields.io/badge/Scrum-22A5F1?style=flat&logo=scrum&logoColor=white" alt="Scrum">
-            </div>
-          </div>
+        <div class="stats" role="list">
+          <div class="stat" role="listitem"><b>700+</b><span data-t="s1">descargas de instaladores en GitHub</span></div>
+          <div class="stat" role="listitem"><b>79</b><span data-t="s2">versiones publicadas en 4 semanas</span></div>
+          <div class="stat" role="listitem"><b>4</b><span data-t="s3">sistemas: Windows, Linux, Android e iPhone</span></div>
+          <div class="stat" role="listitem"><b>0</b><span data-t="s4">publicidad, analíticas o venta de datos</span></div>
+        </div>
+
+        <div class="feat">
+          <div><h3 data-t="ft1h">La isla</h3><p data-t="ft1p">Pasás el mouse arriba de la pantalla y se abre con tu música, tu día, un foco y lo que guardaste.</p></div>
+          <div><h3 data-t="ft2h">Tareas, recordatorios y hábitos</h3><p data-t="ft2p">Te avisan aunque Teire esté cerrada. Los hábitos llevan racha.</p></div>
+          <div><h3 data-t="ft3h">Listas y chat en vivo</h3><p data-t="ft3p">Ves quién tilda cada cosa al instante y chateás con amigos y grupos.</p></div>
+          <div><h3 data-t="ft4h">Espacio</h3><p data-t="ft4p">Una lona compartida para armar algo entre varios, con cambios en tiempo real.</p></div>
+          <div><h3 data-t="ft5h">Teire IA</h3><p data-t="ft5p">Una asistente por voz y por texto para crear, recordar y mandar. Por ahora solo en español.</p></div>
+          <div><h3 data-t="ft6h">Privada y sin internet</h3><p data-t="ft6p">Notas con PIN cifradas en tu equipo. Funciona sin conexión y sincroniza al volver.</p></div>
+        </div>
+
+        <div class="pepi">
+          <figure><img src="/media/pepi-mensaje.webp" alt="" data-t-alt="pp1a" width="1248" height="306" loading="lazy"><figcaption data-t="pp1">Pepi se asombra cuando te escribe alguien.</figcaption></figure>
+          <figure><img src="/media/pepi-cumple.webp" alt="" data-t-alt="pp2a" width="1208" height="274" loading="lazy"><figcaption data-t="pp2">Pepi festeja el cumpleaños de tus amigos.</figcaption></figure>
+          <figure><img src="/media/pepi-cansado.webp" alt="" data-t-alt="pp3a" width="1568" height="710" loading="lazy"><figcaption data-t="pp3">Pepi se cansa si pasás horas sin parar.</figcaption></figure>
         </div>
       </div>
-      <div class="contenedor-contacto"></div>
     </section>
-    <section id="proyectos">
-      <canvas id="particulas-proyectos" aria-hidden="true"></canvas>
-      <div class="proyectos-top">
-        <h1 class="cal-sans-regular">Proyectos</h1>
+
+    <section class="sec gh">
+      <div class="pad gh-row">
+        <span data-t="gh_text">Más código y proyectos en mi GitHub.</span>
+        <a class="chip line" href="https://github.com/codewtato?tab=repositories" target="_blank" rel="noopener" data-t="gh_btn">Ver GitHub</a>
       </div>
-
-      <div class="proyectos-stickers">
-        <button type="button" class="proyecto-item" aria-label="Proyecto (proximamente)" title="Proyecto proximamente">
-          <svg class="sticker sticker-fantasma" viewBox="14 0 62 100">
-            <path d="M30 34 Q50 16 70 34" fill="none" stroke="#a97fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-            <ellipse cx="50" cy="34" rx="21" ry="6" fill="#e5dccf" stroke="#a97fff" stroke-width="4" />
-            <path
-              d="M28 40 Q28 19 50 19 Q72 19 72 40 L72 76 Q66 83 60 76 Q54 83 48 76 Q42 83 36 76 Q30 83 28 76 Z"
-              fill="#e5dccf" stroke="#a97fff" stroke-width="4" stroke-linejoin="round" />
-            <circle cx="42" cy="48" r="3" fill="#0f0f11" />
-            <circle cx="58" cy="48" r="3" fill="#0f0f11" />
-            <path d="M26 56 Q14 61 19 71" fill="none" stroke="#a97fff" stroke-width="4" stroke-linecap="round" />
-          </svg>
-        </button>
-
-        <button type="button" class="proyecto-item" aria-label="Proyecto (proximamente)" title="Proyecto proximamente">
-          <svg class="sticker sticker-flor" viewBox="8 0 80 100">
-            <path
-              d="M50 10 C65 10 68 25 60 32 C75 30 85 42 78 55 C85 68 75 80 60 76 C65 85 50 92 42 80 C28 88 15 78 22 65 C10 65 8 48 22 42 C15 30 28 18 40 25 C38 15 42 10 50 10 Z"
-              fill="#e5dccf" stroke="#ff6b5e" stroke-width="4" stroke-linejoin="round" />
-            <rect x="41" y="41" width="18" height="18" rx="5" fill="#e5dccf" stroke="#ff6b5e" stroke-width="3" />
-          </svg>
-        </button>
-
-        <button type="button" class="proyecto-item" aria-label="Proyecto (proximamente)" title="Proyecto proximamente">
-          <svg class="sticker sticker-nube" viewBox="8 -8 85 100">
-            <path
-              d="M25 60 Q10 60 10 46 Q10 34 24 34 Q26 18 44 18 Q58 18 62 30 Q78 28 82 44 Q92 46 90 58 Q88 66 78 66 L28 66 Q25 66 25 60 Z"
-              fill="#e5dccf" stroke="#5ec8ff" stroke-width="4" stroke-linejoin="round" />
-            <path d="M38 46 q4 -6 8 0" fill="none" stroke="#0f0f11" stroke-width="3" stroke-linecap="round" />
-            <path d="M58 46 q4 -6 8 0" fill="none" stroke="#0f0f11" stroke-width="3" stroke-linecap="round" />
-            <path d="M44 55 q6 6 12 0" fill="none" stroke="#0f0f11" stroke-width="3" stroke-linecap="round" />
-          </svg>
-        </button>
-
-        <button type="button" class="proyecto-item" aria-label="Proyecto (proximamente)" title="Proyecto proximamente">
-          <svg class="sticker sticker-smiley" viewBox="10 0 80 100">
-            <circle cx="50" cy="50" r="37" fill="#e5dccf" stroke="#6fd18c" stroke-width="5" />
-            <circle cx="38" cy="44" r="3.5" fill="#0f0f11" />
-            <circle cx="62" cy="44" r="3.5" fill="#0f0f11" />
-            <path d="M34 60 Q50 74 66 60" fill="none" stroke="#0f0f11" stroke-width="4" stroke-linecap="round" />
-          </svg>
-        </button>
-      </div>
-      <div class="contenedor-contacto"></div>
     </section>
-    <footer id="footer-form">
-      <span class="marca-fondo cal-sans-regular" aria-hidden="true">TATO</span>
 
-      <div class="tarjeta-contacto">
-        <div class="tarjeta-contacto-header">
-          <h2 class="cal-sans-regular">Contactar a Matias Dagostino</h2>
-          <button type="button" class="cerrar-tarjeta" id="cerrar-contacto" aria-label="Volver arriba">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <div class="tarjeta-contacto-body">
-          <div class="columna-conectemos">
-            <h3>Conectemos</h3>
-            <ul class="lista-conectemos">
-              <li>
-                <a href="mailto:codewtato@gmail.com">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <rect x="3" y="5" width="18" height="14" rx="2" />
-                    <path d="m3 7 9 6 9-6" />
-                  </svg>
-                  <span>codewtato@gmail.com</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://wa.me/5493435015897" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path
-                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                  <span>+54 9 343 501 5897</span>
-                </a>
-              </li>
-              <li>
-                <span class="sin-link">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  <span>Paraná, Entre Ríos, Argentina</span>
-                </span>
-              </li>
-              <li>
-                <a href="https://github.com/codewtato" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.89-.01-1.74-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.34c.85 0 1.7.12 2.5.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span>github.com/codewtato</span>
-                </a>
-              </li>
-            </ul>
-
-            <h3>Disponible para</h3>
-            <ul class="lista-disponible">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="m8 12 3 3 6-6" />
-                </svg>
-                <span>Proyectos freelance</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="m8 12 3 3 6-6" />
-                </svg>
-                <span>Colaboraciones</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="m8 12 3 3 6-6" />
-                </svg>
-                <span>Oportunidades laborales</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="m8 12 3 3 6-6" />
-                </svg>
-                <span>Consultorías</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="columna-formulario">
-            <h3>Enviame un mensaje</h3>
-            <p>Completá el formulario y me pondré en contacto.</p>
-
-            <form id="form-contacto">
-              <label for="nombre">Nombre</label>
-              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
-
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="tu@email.com" required />
-
-              <label for="numero">Número (opcional)</label>
-              <input id="numero" name="numero" type="tel" placeholder="+54 11 1234 5678" />
-
-              <label for="asunto">Asunto</label>
-              <input id="asunto" name="asunto" type="text" placeholder="¿En qué puedo ayudarte?" />
-
-              <label for="mensaje">Mensaje</label>
-              <textarea id="mensaje" name="mensaje" placeholder="Contame sobre tu proyecto o consulta..."
-                required></textarea>
-
-              <button type="submit" class="boton-enviar">Enviar mensaje</button>
-            </form>
-
-            <a class="link-whatsapp" href="https://wa.me/5493435015897" target="_blank" rel="noopener">
-              O escribime por WhatsApp
-            </a>
-          </div>
+    <section class="sec" id="sobre-mi">
+      <div class="pad">
+        <div class="sec-head"><h2 data-t="about_h">Sobre mí</h2><p data-t="about_p">Paraná, Entre Ríos, Argentina.</p></div>
+        <div class="about">
+          <p class="lead" data-t="about_lead">Programo el sistema completo y lo publico para que lo use gente.</p>
+          <p class="body" data-t="about_body">Soy Técnico Universitario en Programación por la UTN. Todavía no trabajé en una empresa de software, y lo que sé lo aprendí construyendo: la facultad me dio la base y Teire me obligó a resolver todo lo demás, del servidor al instalador.</p>
+          <dl class="now">
+            <dt data-t="nk1">Estudié</dt><dd data-t="nv1">Técnico Universitario en Programación, UTN</dd>
+            <dt data-t="nk2">Construyendo</dt><dd>Teire</dd>
+            <dt data-t="nk3">Uso a diario</dt><dd>Java, Spring Boot, Python, FastAPI, TypeScript, React</dd>
+            <dt data-t="nk4">Aprendiendo</dt><dd data-t="nv4">Tauri, Supabase y análisis de datos con R</dd>
+            <dt data-t="nk5">Disponible para</dt><dd data-t="nv5">Empleo, freelance, colaboraciones y consultoría</dd>
+          </dl>
         </div>
       </div>
+    </section>
 
-      <div class="contenedor-contacto"></div>
-    </footer>
+    <section class="sec" id="stack">
+      <div class="pad">
+        <div class="sec-head"><h2 data-t="stack_h">Stack</h2><p data-t="stack_p">Con qué trabajo cada parte de un sistema.</p></div>
+      </div>
+      <div class="cells">
+        <div class="cell"><h3 data-t="c1h">Backend y datos</h3><div><p data-t="c1p">APIs y modelado de bases de datos relacionales y no relacionales.</p><ul><li>Java</li><li>Spring</li><li>Python</li><li>FastAPI</li><li>Node.js</li><li>R</li><li>MySQL</li><li>MongoDB</li></ul></div></div>
+        <div class="cell"><h3 data-t="c2h">Frontend</h3><div><p data-t="c2p">Interfaces modernas y responsivas, con arquitectura modular.</p><ul><li>TypeScript</li><li>JavaScript</li><li>React</li><li>Tailwind</li><li>Vite</li><li>HTML</li><li>CSS</li></ul></div></div>
+        <div class="cell"><h3 data-t="c3h">Herramientas</h3><div><p data-t="c3p">Entornos Linux, control de versiones y entregas por sprints.</p><ul><li>Linux</li><li>Git</li><li>Bash</li><li>Jira</li><li>Trello</li><li>Scrum</li></ul></div></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="pad">
+        <div class="contact-grid">
+          <h2 data-t="contact_h">Escribime.</h2>
+          <div class="info">
+            <dl>
+              <dt>Email</dt><dd id="mail">codewtato@gmail.com</dd>
+              <dt>WhatsApp</dt><dd><a href="https://wa.me/5493435015897" target="_blank" rel="noopener">+54 9 343 501 5897</a></dd>
+              <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/matias-d-agostino-291380357/" target="_blank" rel="noopener">matias-d-agostino</a></dd>
+              <dt>GitHub</dt><dd><a href="https://github.com/codewtato" target="_blank" rel="noopener">github.com/codewtato</a></dd>
+              <dt data-t="k_loc">Ubicación</dt><dd data-t="v_loc">Paraná, Entre Ríos</dd>
+            </dl>
+            <button type="button" class="copy" id="copy" data-t="copy">Copiar email</button>
+          </div>
+          <form class="form" id="form" novalidate>
+            <label for="f-nombre"><span data-t="l_name">Nombre</span><input id="f-nombre" name="nombre" autocomplete="name" required></label>
+            <label for="f-email"><span>Email</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+            <label for="f-num"><span data-t="l_phone">Número (opcional)</span><input id="f-num" name="numero" type="tel" autocomplete="tel"></label>
+            <label for="f-asunto"><span data-t="l_subject">Asunto</span><input id="f-asunto" name="asunto" required></label>
+            <label class="full" for="f-msg"><span data-t="l_msg">Mensaje</span><textarea id="f-msg" name="mensaje" required></textarea></label>
+            <div class="hp" aria-hidden="true"><label for="f-web">No completar<input id="f-web" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+            <div class="actions"><button class="send" id="send" type="submit" data-t="send">Enviar mensaje</button><button class="wa" id="wa" type="button" data-t="send_wa">Enviar por WhatsApp</button></div>
+            <p class="status" id="status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script type="module" src="./src/ts/main.ts"></script>
-  <div class="capsula" aria-hidden="true"></div>
-</body>
+  <footer class="foot pad"><span data-t="foot_role">Matías D'Agostino, Desarrollador Full-Stack</span><span><span data-t="foot_city">Paraná</span> <span id="clock">--:--</span></span></footer>
+</div>
 
+<script>
+(function(){
+  var FORM_ENDPOINT='https://formsubmit.co/ajax/codewtato@gmail.com';
+
+  /* ---------- i18n ---------- */
+  var T={
+    es:{
+      title:"Matías D'Agostino, Desarrollador Full-Stack",skip:"Saltar al contenido",loading:"Cargando portfolio",
+      nav_proj:"Proyectos",nav_about:"Sobre mí",nav_stack:"Stack",nav_contact:"Contacto",
+      h1a:"Desarrollador",h1b:"Full-Stack",
+      hero_p:"Backend, bases de datos e interfaces. Mi app Teire ya se descarga en Windows, Linux y Android.",
+      cta_proj:"Ver proyectos",cta_contact:"Contactarme",
+      proj_h:"Proyectos",proj_p:"Mi proyecto principal, publicado y en uso. El código está en GitHub.",
+      tei_label:"Proyecto destacado",tei_lead:"Una app gratuita para organizar tu día y compartirlo con tu gente.",
+      tei_visit:"Visitar Teire",tei_dl:"Descargas en GitHub",
+      fk1:"Plataformas",fv1:"Windows, Linux, Android e iPhone",fk2:"Tecnología",fk3:"Precio",fv3:"Gratis, sin publicidad",fk4:"Mi rol",fv4:"Diseño, desarrollo y publicación, yo solo",
+      vid_alt:"La isla de Teire en el escritorio de Windows, abriéndose y cambiando de pestaña",vid_pause:"Pausar video",vid_play:"Reanudar video",
+      s1:"descargas de instaladores en GitHub",s2:"versiones publicadas en 4 semanas",s3:"sistemas: Windows, Linux, Android e iPhone",s4:"publicidad, analíticas o venta de datos",
+      ft1h:"La isla",ft1p:"Pasás el mouse arriba de la pantalla y se abre con tu música, tu día, un foco y lo que guardaste.",
+      ft2h:"Tareas, recordatorios y hábitos",ft2p:"Te avisan aunque Teire esté cerrada. Los hábitos llevan racha.",
+      ft3h:"Listas y chat en vivo",ft3p:"Ves quién tilda cada cosa al instante y chateás con amigos y grupos.",
+      ft4h:"Espacio",ft4p:"Una lona compartida para armar algo entre varios, con cambios en tiempo real.",
+      ft5h:"Teire IA",ft5p:"Una asistente por voz y por texto para crear, recordar y mandar. Por ahora solo en español.",
+      ft6h:"Privada y sin internet",ft6p:"Notas con PIN cifradas en tu equipo. Funciona sin conexión y sincroniza al volver.",
+      pp1:"Pepi se asombra cuando te escribe alguien.",pp2:"Pepi festeja el cumpleaños de tus amigos.",pp3:"Pepi se cansa si pasás horas sin parar.",
+      pp1a:"Pepi, la mascota de Teire, sorprendida por un mensaje de un amigo",pp2a:"Pepi, la mascota de Teire, festejando un cumpleaños",pp3a:"Pepi, la mascota de Teire, cansada",
+      gh_text:"Más código y proyectos en mi GitHub.",gh_btn:"Ver GitHub",
+      about_h:"Sobre mí",about_p:"Paraná, Entre Ríos, Argentina.",
+      about_lead:"Programo el sistema completo y lo publico para que lo use gente.",
+      about_body:"Soy Técnico Universitario en Programación por la UTN. Todavía no trabajé en una empresa de software, y lo que sé lo aprendí construyendo: la facultad me dio la base y Teire me obligó a resolver todo lo demás, del servidor al instalador.",
+      nk1:"Estudié",nv1:"Técnico Universitario en Programación, UTN",nk2:"Construyendo",nk3:"Uso a diario",nk4:"Aprendiendo",nv4:"Tauri, Supabase y análisis de datos con R",nk5:"Disponible para",nv5:"Empleo, freelance, colaboraciones y consultoría",
+      stack_h:"Stack",stack_p:"Con qué trabajo cada parte de un sistema.",
+      c1h:"Backend y datos",c1p:"APIs y modelado de bases de datos relacionales y no relacionales.",
+      c2h:"Frontend",c2p:"Interfaces modernas y responsivas, con arquitectura modular.",
+      c3h:"Herramientas",c3p:"Entornos Linux, control de versiones y entregas por sprints.",
+      contact_h:"Escribime.",k_loc:"Ubicación",v_loc:"Paraná, Entre Ríos",
+      copy:"Copiar email",copied:"Email copiado",copy_sel:"Seleccionado, copialo con Ctrl+C",
+      l_name:"Nombre",l_phone:"Número (opcional)",l_subject:"Asunto",l_msg:"Mensaje",send:"Enviar mensaje",send_wa:"Enviar por WhatsApp",sending:"Enviando...",wa_hi:"Hola Matías, soy {n}.",wa_subject:"Asunto",wa_email:"Email",wa_phone:"Número",
+      st_missing:"Completá nombre, email, asunto y mensaje para enviar.",
+      st_ok:"Mensaje enviado. Te respondo a la brevedad.",
+      st_err:"No se pudo enviar el mensaje. Probá de nuevo, usá el botón de WhatsApp o escribime a codewtato@gmail.com.",
+      foot_role:"Matías D'Agostino, Desarrollador Full-Stack",foot_city:"Paraná",lang_label:"Switch to English",lang_btn:"EN"
+    },
+    en:{
+      title:"Matías D'Agostino, Full-Stack Developer",skip:"Skip to content",loading:"Loading portfolio",
+      nav_proj:"Projects",nav_about:"About",nav_stack:"Stack",nav_contact:"Contact",
+      h1a:"Full-Stack",h1b:"Developer",
+      hero_p:"Backend, databases and interfaces. My app Teire is already downloaded on Windows, Linux and Android.",
+      cta_proj:"See projects",cta_contact:"Get in touch",
+      proj_h:"Projects",proj_p:"My main project, shipped and in use. The code is on GitHub.",
+      tei_label:"Featured project",tei_lead:"A free app to organize your day and share it with your people.",
+      tei_visit:"Visit Teire",tei_dl:"Downloads on GitHub",
+      fk1:"Platforms",fv1:"Windows, Linux, Android and iPhone",fk2:"Tech",fk3:"Price",fv3:"Free, no ads",fk4:"My role",fv4:"Design, development and release, solo",
+      vid_alt:"Teire's island on the Windows desktop, opening and switching tabs",vid_pause:"Pause video",vid_play:"Play video",
+      s1:"installer downloads on GitHub",s2:"releases shipped in 4 weeks",s3:"systems: Windows, Linux, Android and iPhone",s4:"ads, analytics or data sales",
+      ft1h:"The island",ft1p:"Hover the top of your screen and it opens with your music, your day, a focus timer and what you saved.",
+      ft2h:"Tasks, reminders and habits",ft2p:"They notify you even when Teire is closed. Habits keep a streak.",
+      ft3h:"Live lists and chat",ft3p:"See who checks off each item instantly, and chat with friends and groups.",
+      ft4h:"Space",ft4p:"A shared canvas to build something together, with changes in real time.",
+      ft5h:"Teire AI",ft5p:"A voice and text assistant to create, remember and send. Spanish only for now.",
+      ft6h:"Private and offline",ft6p:"PIN-protected notes encrypted on your device. Works offline and syncs when you're back.",
+      pp1:"Pepi gets surprised when someone writes to you.",pp2:"Pepi celebrates your friends' birthdays.",pp3:"Pepi gets tired if you go for hours without a break.",
+      pp1a:"Pepi, Teire's mascot, surprised by a message from a friend",pp2a:"Pepi, Teire's mascot, celebrating a birthday",pp3a:"Pepi, Teire's mascot, looking tired",
+      gh_text:"More code and projects on my GitHub.",gh_btn:"See GitHub",
+      about_h:"About",about_p:"Paraná, Entre Ríos, Argentina.",
+      about_lead:"I build the whole system and ship it for real people to use.",
+      about_body:"I hold a university technical degree in programming from UTN. I haven't worked at a software company yet, and I learned by building: university gave me the base, and Teire forced me to solve everything else, from the server to the installer.",
+      nk1:"Studied",nv1:"University Technician in Programming, UTN",nk2:"Building",nk3:"Daily stack",nk4:"Learning",nv4:"Tauri, Supabase and data analysis with R",nk5:"Open to",nv5:"Full-time roles, freelance, collaborations and consulting",
+      stack_h:"Stack",stack_p:"What I use for each part of a system.",
+      c1h:"Backend and data",c1p:"APIs and modeling of relational and non-relational databases.",
+      c2h:"Frontend",c2p:"Modern, responsive interfaces with modular architecture.",
+      c3h:"Tools",c3p:"Linux environments, version control and sprint-based delivery.",
+      contact_h:"Write to me.",k_loc:"Location",v_loc:"Paraná, Entre Ríos, Argentina",
+      copy:"Copy email",copied:"Email copied",copy_sel:"Selected, copy it with Ctrl+C",
+      l_name:"Name",l_phone:"Phone (optional)",l_subject:"Subject",l_msg:"Message",send:"Send message",send_wa:"Send via WhatsApp",sending:"Sending...",wa_hi:"Hi Matías, I'm {n}.",wa_subject:"Subject",wa_email:"Email",wa_phone:"Phone",
+      st_missing:"Fill in your name, email, subject and message to send.",
+      st_ok:"Message sent. I'll get back to you soon.",
+      st_err:"The message could not be sent. Try again, use the WhatsApp button or email me at codewtato@gmail.com.",
+      foot_role:"Matías D'Agostino, Full-Stack Developer",foot_city:"Paraná",lang_label:"Cambiar a español",lang_btn:"ES"
+    }
+  };
+  var lang='es';
+  try{var saved=localStorage.getItem('lang');if(saved==='es'||saved==='en') lang=saved;else lang=(navigator.language||'es').toLowerCase().indexOf('es')===0?'es':'en';}
+  catch(e){lang=(navigator.language||'es').toLowerCase().indexOf('es')===0?'es':'en';}
+  var statusKey=null;
+  function t(k){return T[lang][k];}
+  function apply(){
+    var d=T[lang];
+    document.documentElement.setAttribute('lang',lang);
+    document.title=d.title;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-t]'),function(el){var v=d[el.getAttribute('data-t')];if(v!==undefined) el.textContent=v;});
+    Array.prototype.forEach.call(document.querySelectorAll('[data-t-alt]'),function(el){el.setAttribute('alt',d[el.getAttribute('data-t-alt')]);});
+    Array.prototype.forEach.call(document.querySelectorAll('[data-t-aria]'),function(el){el.setAttribute('aria-label',d[el.getAttribute('data-t-aria')]);});
+    var lb=document.getElementById('lang');lb.textContent=d.lang_btn;lb.setAttribute('aria-label',d.lang_label);
+    vbtn.textContent=video.paused?d.vid_play:d.vid_pause;
+    if(statusKey) statusEl.textContent=d[statusKey];
+  }
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ptr={x:-9999,y:-9999};
+  window.addEventListener('pointermove',function(e){ptr.x=e.clientX;ptr.y=e.clientY;});
+
+  /* ---------- video: pause control, still image for reduced motion ---------- */
+  var video=document.getElementById('isla'),vbtn=document.getElementById('vbtn'),still=document.getElementById('islaStill'),statusEl=document.getElementById('status');
+  if(reduce){video.removeAttribute('autoplay');video.pause();video.hidden=true;vbtn.hidden=true;still.hidden=false;still.setAttribute('alt','');}
+  vbtn.addEventListener('click',function(){
+    if(video.paused){var p=video.play();if(p&&p.catch)p.catch(function(){});}else video.pause();
+  });
+  video.addEventListener('play',function(){vbtn.textContent=t('vid_pause');});
+  video.addEventListener('pause',function(){vbtn.textContent=t('vid_play');});
+
+  document.getElementById('lang').addEventListener('click',function(){
+    lang=lang==='es'?'en':'es';
+    try{localStorage.setItem('lang',lang);}catch(e){}
+    apply();
+  });
+  apply();
+
+  /* ---------- preloader: counter, then the curtain lifts ---------- */
+  var pre=document.getElementById('pre'),num=document.getElementById('preNum');
+  if(!reduce){
+    pre.hidden=false;
+    var t0=performance.now(),dur=1100;
+    (function step(now){
+      var k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,2.2);
+      num.textContent=Math.round(e*100);
+      if(k<1) requestAnimationFrame(step);
+      else{pre.classList.add('done');setTimeout(function(){pre.hidden=true;},900);}
+    })(t0);
+  }
+
+  /* ---------- dot grid ---------- */
+  var hero=document.getElementById('hero'),cv=document.getElementById('dots'),cx=cv.getContext('2d'),W=0,H=0;
+  function size(){
+    var r=hero.getBoundingClientRect();if(!r.width) return;
+    var d=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);
+  }
+  if('ResizeObserver' in window) new ResizeObserver(size).observe(hero);
+  window.addEventListener('resize',size);size();
+  function draw(now){
+    if(W&&!document.hidden){
+      var r=hero.getBoundingClientRect();
+      if(r.bottom>0&&r.top<window.innerHeight){
+        var px=ptr.x-r.left,py=ptr.y-r.top,inside=ptr.x>=r.left&&ptr.x<=r.right&&ptr.y>=r.top&&ptr.y<=r.bottom;
+        var pitch=26,R=170;
+        cx.clearRect(0,0,W,H);
+        var cols=Math.ceil(W/pitch)+1,rows=Math.ceil(H/pitch)+1;
+        for(var j=0;j<rows;j++){
+          for(var i=0;i<cols;i++){
+            var bx=i*pitch+pitch/2,by=j*pitch+pitch/2,x=bx,y=by,f=0;
+            if(inside){
+              var dx=bx-px,dy=by-py,d=Math.sqrt(dx*dx+dy*dy);
+              if(d<R&&d>0.01){f=1-d/R;var push=f*f*30;x=bx+dx/d*push;y=by+dy/d*push;}
+            }
+            var amb=reduce?0:(Math.sin(i*0.35+j*0.25+now*0.0012)+1)*0.25;
+            var rad=1.2+amb*0.8+f*3.4;
+            cx.fillStyle='rgba('+Math.round(11+79*f)+','+Math.round(11+32*f)+','+Math.round(11+244*f)+','+(0.26+0.7*f).toFixed(2)+')';
+            cx.beginPath();cx.arc(x,y,rad,0,6.2832);cx.fill();
+          }
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  /* ---------- clock, Parana ---------- */
+  var clock=document.getElementById('clock');
+  function tick(){try{clock.textContent=new Intl.DateTimeFormat('es-AR',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'America/Argentina/Buenos_Aires'}).format(new Date());}catch(e){}}
+  tick();setInterval(tick,15000);
+
+  /* ---------- copy email ---------- */
+  var copy=document.getElementById('copy'),copyTimer;
+  copy.addEventListener('click',function(){
+    clearTimeout(copyTimer);
+    var reset=function(){copyTimer=setTimeout(function(){copy.textContent=t('copy');},2000);};
+    var done=function(){copy.textContent=t('copied');reset();};
+    var fallback=function(){
+      var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+      copy.textContent=t('copy_sel');reset();
+    };
+    try{navigator.clipboard.writeText('codewtato@gmail.com').then(done,fallback);}catch(e){fallback();}
+  });
+
+  /* ---------- contact form: real submission through FormSubmit ---------- */
+  var form=document.getElementById('form'),send=document.getElementById('send');
+  function setStatus(key){statusKey=key;statusEl.textContent=key?t(key):'';}
+  function firstInvalid(){
+    var bad=null;
+    Array.prototype.forEach.call(form.querySelectorAll('[required]'),function(f){
+      var ok=f.value.trim()!==''&&f.checkValidity();
+      f.setAttribute('aria-invalid',ok?'false':'true');
+      if(!ok&&!bad) bad=f;
+    });
+    return bad;
+  }
+  var WA_NUMBER='5493435015897';
+  document.getElementById('wa').addEventListener('click',function(){
+    var bad=firstInvalid();
+    if(bad){setStatus('st_missing');bad.focus();return;}
+    var lines=[
+      t('wa_hi').replace('{n}',form.nombre.value.trim()),
+      t('wa_subject')+': '+form.asunto.value.trim(),
+      form.mensaje.value.trim(),
+      t('wa_email')+': '+form.email.value.trim()
+    ];
+    if(form.numero.value.trim()) lines.push(t('wa_phone')+': '+form.numero.value.trim());
+    window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
+    setStatus(null);
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(document.getElementById('f-web').value) return; /* honeypot: bots fill it */
+    var bad=firstInvalid();
+    if(bad){setStatus('st_missing');bad.focus();return;}
+    var payload={
+      name:form.nombre.value.trim(),email:form.email.value.trim(),phone:form.numero.value.trim(),
+      subject:form.asunto.value.trim(),message:form.mensaje.value.trim(),
+      _subject:'Portfolio: '+form.asunto.value.trim(),_template:'table',_captcha:'false'
+    };
+    send.disabled=true;send.textContent=t('sending');setStatus(null);
+    var restore=function(){send.disabled=false;send.textContent=t('send');};
+    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+      .then(function(res){return res.json().catch(function(){return {};}).then(function(data){return {ok:res.ok,data:data};});})
+      .then(function(r){
+        restore();
+        if(r.ok&&(r.data.success===true||r.data.success==='true')){form.reset();setStatus('st_ok');}
+        else setStatus('st_err');
+      })
+      .catch(function(){restore();setStatus('st_err');});
+  });
+})();
+</script>
+</body>
 </html>
