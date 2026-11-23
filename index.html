@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&display=swap">
 <style>
 /* Layout: one committed light world (warm grey paper, black, one electric violet). 12-column grid is visible in the hero;
-   sections are ruled cells. Teire is the featured project on an ink block, the rest is an index. */
+   sections are ruled cells. The page is about Matías: name first, then who he is, then Teire as the main proof of work. */
 :root{
   --paper:#F1F1EE; --ink:#0B0B0B; --vio:#5A2BFF; --dim:#5C5C58; --rule:#0B0B0B;
   --f:'Familjen Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
@@ -61,6 +61,8 @@ section[id]{scroll-margin-top:56px}
 .nav a{text-decoration:none;position:relative;padding-block:2px}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--vio);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 .nav a:hover::after{transform:scaleX(1)}
+.nav .name{transition:opacity .3s}
+body.hero-in .nav .name{opacity:0;pointer-events:none}
 .lang{font:600 13px/1 var(--f);background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);border:0;border-radius:999px;padding:8px 12px;cursor:pointer;transition:background .2s,color .2s}
 .lang:hover{background:var(--ink);color:var(--paper)}
 @media (max-width:620px){.nav .links{font-size:13px}.nav .name{display:none}.nav{justify-content:flex-end}}
@@ -68,12 +70,14 @@ section[id]{scroll-margin-top:56px}
 /* hero */
 .hero{position:relative;min-height:clamp(560px,min(62cqw,calc(100svh - 56px)),760px);padding-block:clamp(16px,3cqw,32px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-bottom:1.5px solid var(--ink);background-image:repeating-linear-gradient(90deg,rgba(11,11,11,.08) 0 1px,transparent 1px calc(100%/12))}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.hero-top,.hero h1,.hero-foot{position:relative}
+.hero-top,.hero-main,.hero-foot{position:relative}
 .hero-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:600;font-size:clamp(13px,1.5cqw,15px);pointer-events:none}
 .hero-top span:last-child{font-variant-numeric:tabular-nums}
-.hero h1{margin:0;font-weight:700;font-size:clamp(56px,12.4cqw,190px);line-height:.88;letter-spacing:-.055em;pointer-events:none}
+.hero-main{pointer-events:none}
+.hero h1{margin:0;font-weight:700;font-size:clamp(60px,14.6cqw,230px);line-height:.86;letter-spacing:-.06em}
+.hero .role{margin:clamp(14px,2cqw,26px) 0 0;font-size:clamp(22px,3.4cqw,50px);font-weight:600;letter-spacing:-.03em;line-height:1.05}
 .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
-.hero-foot p{margin:0;max-width:38ch;font-size:clamp(15px,1.9cqw,20px);font-weight:500;line-height:1.35;pointer-events:none}
+.hero-foot p{margin:0;max-width:28ch;font-size:clamp(18px,2.4cqw,32px);font-weight:600;letter-spacing:-.025em;line-height:1.1;pointer-events:none;text-wrap:balance}
 .chips{display:flex;gap:10px;flex-wrap:wrap}
 .chip{background:var(--vio);color:#fff;font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px;text-decoration:none;transition:background .2s,color .2s}
 .chip.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
@@ -92,7 +96,7 @@ a.chip:not(.line):hover{background:var(--ink)}
 .tei-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:clamp(18px,3cqw,32px);font-weight:600;font-size:clamp(13px,1.5cqw,15px)}
 .tei-top span:first-child{display:inline-flex;align-items:center;gap:10px;color:#B7A6FF}
 .tei-top img{width:26px;height:26px;border-radius:7px}
-.tei-word{margin:clamp(8px,2cqw,24px) 0 0;font-weight:700;font-size:clamp(110px,31cqw,480px);line-height:.76;letter-spacing:-.075em;padding-bottom:.04em}
+.tei-word{margin:clamp(8px,2cqw,24px) 0 0;font-weight:700;font-size:clamp(72px,15cqw,230px);line-height:.8;letter-spacing:-.07em;padding-bottom:.04em}
 .tei-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,3cqw,40px);padding-block:clamp(24px,4cqw,56px) clamp(24px,4cqw,48px);border-top:1px solid #3A3A3A;margin-top:clamp(16px,3cqw,40px)}
 .tei-lead{grid-column:1/8;margin:0;font-size:clamp(24px,3.6cqw,50px);line-height:1.06;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
 .tei-grid .chips{grid-column:1/8}
@@ -112,15 +116,12 @@ a.chip:not(.line):hover{background:var(--ink)}
 .stat:first-child{padding-left:0}
 .stat b{font-weight:700;font-size:clamp(44px,8cqw,112px);line-height:.9;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
 .stat span{color:#A5A5A0;font-size:clamp(13px,1.45cqw,15px);max-width:22ch}
-.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #3A3A3A}
+.feat-h{margin:clamp(28px,4.4cqw,60px) 0 clamp(12px,1.8cqw,22px);font-size:clamp(20px,2.6cqw,32px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #3A3A3A;margin-bottom:clamp(28px,5cqw,64px)}
 .feat div{padding:clamp(16px,2.6cqw,32px) clamp(0px,.5cqw,8px) clamp(18px,3cqw,36px);border-bottom:1px solid #3A3A3A;display:flex;flex-direction:column;gap:6px}
 .feat div:not(:nth-child(3n+1)){padding-left:clamp(14px,2.6cqw,32px);border-left:1px solid #3A3A3A}
 .feat h3{margin:0;font-size:clamp(18px,2.4cqw,28px);font-weight:600;letter-spacing:-.025em;line-height:1.1}
 .feat p{margin:0;color:#A5A5A0;font-size:clamp(13px,1.45cqw,15px);max-width:34ch}
-.pepi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4cqw,32px);align-items:start;padding-block:clamp(24px,4cqw,48px) clamp(28px,5cqw,64px)}
-.pepi figure{margin:0;display:flex;flex-direction:column;gap:12px}
-.pepi img{display:block;width:100%;height:auto}
-.pepi figcaption{color:#A5A5A0;font-size:clamp(13px,1.45cqw,15px)}
 @media (max-width:760px){
   .tei-lead,.tei-grid .chips{grid-column:1/-1}
   .tei-facts{grid-column:1/-1;grid-row:auto}
@@ -129,7 +130,6 @@ a.chip:not(.line):hover{background:var(--ink)}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .stat:nth-child(odd){border-left:0;padding-left:0}
   .stat:nth-child(n+3){border-top:1px solid #3A3A3A}
-  .pepi{grid-template-columns:1fr}
 }
 
 /* github strip */
@@ -193,8 +193,8 @@ a.chip:not(.line):hover{background:var(--ink)}
   <nav class="nav pad" aria-label="Principal">
     <span class="name">Matías D'Agostino</span>
     <span class="links">
-      <a href="#proyectos" data-t="nav_proj">Proyectos</a>
       <a href="#sobre-mi" data-t="nav_about">Sobre mí</a>
+      <a href="#proyectos" data-t="nav_proj">Proyectos</a>
       <a href="#stack" data-t="nav_stack">Stack</a>
       <a href="#contacto" data-t="nav_contact">Contacto</a>
       <button type="button" class="lang" id="lang" aria-label="Switch to English">EN</button>
@@ -203,15 +203,35 @@ a.chip:not(.line):hover{background:var(--ink)}
 
   <header class="hero pad" id="hero">
     <canvas id="dots" aria-hidden="true"></canvas>
-    <div class="hero-top"><span>Matías D'Agostino</span><span>Paraná, 31.73 S, 60.53 O</span></div>
-    <h1><span data-t="h1a">Desarrollador</span><br><span data-t="h1b">Full-Stack</span></h1>
+    <div class="hero-top"><span>Paraná, Entre Ríos</span><span>31.73 S, 60.53 O</span></div>
+    <div class="hero-main">
+      <h1>Matías<br>D'Agostino</h1>
+      <p class="role" data-t="role">Desarrollador Full-Stack</p>
+    </div>
     <div class="hero-foot">
-      <p data-t="hero_p">Backend, bases de datos e interfaces. Mi app Teire ya se descarga en Windows, Linux y Android.</p>
+      <p data-t="hero_p">Programo el sistema completo y lo publico para que lo use gente.</p>
       <div class="chips"><a class="chip" href="#proyectos" data-t="cta_proj">Ver proyectos</a><a class="chip line" href="#contacto" data-t="cta_contact">Contactarme</a></div>
     </div>
   </header>
 
   <main>
+    <section class="sec" id="sobre-mi">
+      <div class="pad">
+        <div class="sec-head"><h2 data-t="about_h">Sobre mí</h2><p data-t="about_p">Paraná, Entre Ríos, Argentina.</p></div>
+        <div class="about">
+          <p class="lead" data-t="about_lead">Programo el sistema completo y lo publico para que lo use gente.</p>
+          <p class="body" data-t="about_body">Soy Técnico Universitario en Programación por la UTN. Todavía no trabajé en una empresa de software, y lo que sé lo aprendí construyendo: la facultad me dio la base y Teire me obligó a resolver todo lo demás, del servidor al instalador.</p>
+          <dl class="now">
+            <dt data-t="nk1">Estudié</dt><dd data-t="nv1">Técnico Universitario en Programación, UTN</dd>
+            <dt data-t="nk2">Construyendo</dt><dd>Teire</dd>
+            <dt data-t="nk3">Uso a diario</dt><dd>Java, Spring Boot, Python, FastAPI, TypeScript, React</dd>
+            <dt data-t="nk4">Aprendiendo</dt><dd data-t="nv4">Tauri, Supabase y análisis de datos con R</dd>
+            <dt data-t="nk5">Disponible para</dt><dd data-t="nv5">Empleo, freelance, colaboraciones y consultoría</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <section class="sec" id="proyectos" style="border-bottom:0">
       <div class="pad">
         <div class="sec-head"><h2 data-t="proj_h">Proyectos</h2><p data-t="proj_p">Mi proyecto principal, publicado y en uso. El código está en GitHub.</p></div>
@@ -249,19 +269,14 @@ a.chip:not(.line):hover{background:var(--ink)}
           <div class="stat" role="listitem"><b>0</b><span data-t="s4">publicidad, analíticas o venta de datos</span></div>
         </div>
 
+        <h3 class="feat-h" data-t="feat_h">Lo que construí en Teire</h3>
         <div class="feat">
-          <div><h3 data-t="ft1h">La isla</h3><p data-t="ft1p">Pasás el mouse arriba de la pantalla y se abre con tu música, tu día, un foco y lo que guardaste.</p></div>
-          <div><h3 data-t="ft2h">Tareas, recordatorios y hábitos</h3><p data-t="ft2p">Te avisan aunque Teire esté cerrada. Los hábitos llevan racha.</p></div>
-          <div><h3 data-t="ft3h">Listas y chat en vivo</h3><p data-t="ft3p">Ves quién tilda cada cosa al instante y chateás con amigos y grupos.</p></div>
-          <div><h3 data-t="ft4h">Espacio</h3><p data-t="ft4p">Una lona compartida para armar algo entre varios, con cambios en tiempo real.</p></div>
-          <div><h3 data-t="ft5h">Teire IA</h3><p data-t="ft5p">Una asistente por voz y por texto para crear, recordar y mandar. Por ahora solo en español.</p></div>
-          <div><h3 data-t="ft6h">Privada y sin internet</h3><p data-t="ft6p">Notas con PIN cifradas en tu equipo. Funciona sin conexión y sincroniza al volver.</p></div>
-        </div>
-
-        <div class="pepi">
-          <figure><img src="/media/pepi-mensaje.webp" alt="" data-t-alt="pp1a" width="1248" height="306" loading="lazy"><figcaption data-t="pp1">Pepi se asombra cuando te escribe alguien.</figcaption></figure>
-          <figure><img src="/media/pepi-cumple.webp" alt="" data-t-alt="pp2a" width="1208" height="274" loading="lazy"><figcaption data-t="pp2">Pepi festeja el cumpleaños de tus amigos.</figcaption></figure>
-          <figure><img src="/media/pepi-cansado.webp" alt="" data-t-alt="pp3a" width="1568" height="710" loading="lazy"><figcaption data-t="pp3">Pepi se cansa si pasás horas sin parar.</figcaption></figure>
+          <div><h3 data-t="ft1h">App multiplataforma</h3><p data-t="ft1p">Una sola app para Windows, Linux, Android e iPhone, con una isla de escritorio en Windows.</p></div>
+          <div><h3 data-t="ft2h">Tiempo real</h3><p data-t="ft2p">Listas, chat y un espacio colaborativo donde ves los cambios de los demás al instante.</p></div>
+          <div><h3 data-t="ft3h">Funciona sin internet</h3><p data-t="ft3p">Anda sin conexión y sincroniza los datos al volver.</p></div>
+          <div><h3 data-t="ft4h">Privacidad</h3><p data-t="ft4p">Notas con PIN cifradas en el equipo, sin publicidad ni analíticas.</p></div>
+          <div><h3 data-t="ft5h">Asistente con IA</h3><p data-t="ft5p">Teire IA crea, recuerda y manda cosas por voz o por texto. Por ahora solo en español.</p></div>
+          <div><h3 data-t="ft6h">Entrega continua</h3><p data-t="ft6p">Publico versiones seguido y la app se actualiza sola en cada equipo.</p></div>
         </div>
       </div>
     </section>
@@ -270,23 +285,6 @@ a.chip:not(.line):hover{background:var(--ink)}
       <div class="pad gh-row">
         <span data-t="gh_text">Más código y proyectos en mi GitHub.</span>
         <a class="chip line" href="https://github.com/codewtato?tab=repositories" target="_blank" rel="noopener" data-t="gh_btn">Ver GitHub</a>
-      </div>
-    </section>
-
-    <section class="sec" id="sobre-mi">
-      <div class="pad">
-        <div class="sec-head"><h2 data-t="about_h">Sobre mí</h2><p data-t="about_p">Paraná, Entre Ríos, Argentina.</p></div>
-        <div class="about">
-          <p class="lead" data-t="about_lead">Programo el sistema completo y lo publico para que lo use gente.</p>
-          <p class="body" data-t="about_body">Soy Técnico Universitario en Programación por la UTN. Todavía no trabajé en una empresa de software, y lo que sé lo aprendí construyendo: la facultad me dio la base y Teire me obligó a resolver todo lo demás, del servidor al instalador.</p>
-          <dl class="now">
-            <dt data-t="nk1">Estudié</dt><dd data-t="nv1">Técnico Universitario en Programación, UTN</dd>
-            <dt data-t="nk2">Construyendo</dt><dd>Teire</dd>
-            <dt data-t="nk3">Uso a diario</dt><dd>Java, Spring Boot, Python, FastAPI, TypeScript, React</dd>
-            <dt data-t="nk4">Aprendiendo</dt><dd data-t="nv4">Tauri, Supabase y análisis de datos con R</dd>
-            <dt data-t="nk5">Disponible para</dt><dd data-t="nv5">Empleo, freelance, colaboraciones y consultoría</dd>
-          </dl>
-        </div>
       </div>
     </section>
 
@@ -342,8 +340,6 @@ a.chip:not(.line):hover{background:var(--ink)}
     es:{
       title:"Matías D'Agostino, Desarrollador Full-Stack",skip:"Saltar al contenido",loading:"Cargando portfolio",
       nav_proj:"Proyectos",nav_about:"Sobre mí",nav_stack:"Stack",nav_contact:"Contacto",
-      h1a:"Desarrollador",h1b:"Full-Stack",
-      hero_p:"Backend, bases de datos e interfaces. Mi app Teire ya se descarga en Windows, Linux y Android.",
       cta_proj:"Ver proyectos",cta_contact:"Contactarme",
       proj_h:"Proyectos",proj_p:"Mi proyecto principal, publicado y en uso. El código está en GitHub.",
       tei_label:"Proyecto destacado",tei_lead:"Una app gratuita para organizar tu día y compartirlo con tu gente.",
@@ -351,17 +347,18 @@ a.chip:not(.line):hover{background:var(--ink)}
       fk1:"Plataformas",fv1:"Windows, Linux, Android e iPhone",fk2:"Tecnología",fk3:"Precio",fv3:"Gratis, sin publicidad",fk4:"Mi rol",fv4:"Diseño, desarrollo y publicación, yo solo",
       vid_alt:"La isla de Teire en el escritorio de Windows, abriéndose y cambiando de pestaña",vid_pause:"Pausar video",vid_play:"Reanudar video",
       s1:"descargas de instaladores en GitHub",s2:"versiones publicadas en 4 semanas",s3:"sistemas: Windows, Linux, Android e iPhone",s4:"publicidad, analíticas o venta de datos",
-      ft1h:"La isla",ft1p:"Pasás el mouse arriba de la pantalla y se abre con tu música, tu día, un foco y lo que guardaste.",
-      ft2h:"Tareas, recordatorios y hábitos",ft2p:"Te avisan aunque Teire esté cerrada. Los hábitos llevan racha.",
-      ft3h:"Listas y chat en vivo",ft3p:"Ves quién tilda cada cosa al instante y chateás con amigos y grupos.",
-      ft4h:"Espacio",ft4p:"Una lona compartida para armar algo entre varios, con cambios en tiempo real.",
-      ft5h:"Teire IA",ft5p:"Una asistente por voz y por texto para crear, recordar y mandar. Por ahora solo en español.",
-      ft6h:"Privada y sin internet",ft6p:"Notas con PIN cifradas en tu equipo. Funciona sin conexión y sincroniza al volver.",
-      pp1:"Pepi se asombra cuando te escribe alguien.",pp2:"Pepi festeja el cumpleaños de tus amigos.",pp3:"Pepi se cansa si pasás horas sin parar.",
-      pp1a:"Pepi, la mascota de Teire, sorprendida por un mensaje de un amigo",pp2a:"Pepi, la mascota de Teire, festejando un cumpleaños",pp3a:"Pepi, la mascota de Teire, cansada",
+      role:"Desarrollador Full-Stack",
+      hero_p:"Programo el sistema completo y lo publico para que lo use gente.",
+      feat_h:"Lo que construí en Teire",
+      ft1h:"App multiplataforma",ft1p:"Una sola app para Windows, Linux, Android e iPhone, con una isla de escritorio en Windows.",
+      ft2h:"Tiempo real",ft2p:"Listas, chat y un espacio colaborativo donde ves los cambios de los demás al instante.",
+      ft3h:"Funciona sin internet",ft3p:"Anda sin conexión y sincroniza los datos al volver.",
+      ft4h:"Privacidad",ft4p:"Notas con PIN cifradas en el equipo, sin publicidad ni analíticas.",
+      ft5h:"Asistente con IA",ft5p:"Teire IA crea, recuerda y manda cosas por voz o por texto. Por ahora solo en español.",
+      ft6h:"Entrega continua",ft6p:"Publico versiones seguido y la app se actualiza sola en cada equipo.",
+      about_lead:"Técnico en Programación y creador de Teire.",
       gh_text:"Más código y proyectos en mi GitHub.",gh_btn:"Ver GitHub",
       about_h:"Sobre mí",about_p:"Paraná, Entre Ríos, Argentina.",
-      about_lead:"Programo el sistema completo y lo publico para que lo use gente.",
       about_body:"Soy Técnico Universitario en Programación por la UTN. Todavía no trabajé en una empresa de software, y lo que sé lo aprendí construyendo: la facultad me dio la base y Teire me obligó a resolver todo lo demás, del servidor al instalador.",
       nk1:"Estudié",nv1:"Técnico Universitario en Programación, UTN",nk2:"Construyendo",nk3:"Uso a diario",nk4:"Aprendiendo",nv4:"Tauri, Supabase y análisis de datos con R",nk5:"Disponible para",nv5:"Empleo, freelance, colaboraciones y consultoría",
       stack_h:"Stack",stack_p:"Con qué trabajo cada parte de un sistema.",
@@ -379,8 +376,6 @@ a.chip:not(.line):hover{background:var(--ink)}
     en:{
       title:"Matías D'Agostino, Full-Stack Developer",skip:"Skip to content",loading:"Loading portfolio",
       nav_proj:"Projects",nav_about:"About",nav_stack:"Stack",nav_contact:"Contact",
-      h1a:"Full-Stack",h1b:"Developer",
-      hero_p:"Backend, databases and interfaces. My app Teire is already downloaded on Windows, Linux and Android.",
       cta_proj:"See projects",cta_contact:"Get in touch",
       proj_h:"Projects",proj_p:"My main project, shipped and in use. The code is on GitHub.",
       tei_label:"Featured project",tei_lead:"A free app to organize your day and share it with your people.",
@@ -388,17 +383,18 @@ a.chip:not(.line):hover{background:var(--ink)}
       fk1:"Platforms",fv1:"Windows, Linux, Android and iPhone",fk2:"Tech",fk3:"Price",fv3:"Free, no ads",fk4:"My role",fv4:"Design, development and release, solo",
       vid_alt:"Teire's island on the Windows desktop, opening and switching tabs",vid_pause:"Pause video",vid_play:"Play video",
       s1:"installer downloads on GitHub",s2:"releases shipped in 4 weeks",s3:"systems: Windows, Linux, Android and iPhone",s4:"ads, analytics or data sales",
-      ft1h:"The island",ft1p:"Hover the top of your screen and it opens with your music, your day, a focus timer and what you saved.",
-      ft2h:"Tasks, reminders and habits",ft2p:"They notify you even when Teire is closed. Habits keep a streak.",
-      ft3h:"Live lists and chat",ft3p:"See who checks off each item instantly, and chat with friends and groups.",
-      ft4h:"Space",ft4p:"A shared canvas to build something together, with changes in real time.",
-      ft5h:"Teire AI",ft5p:"A voice and text assistant to create, remember and send. Spanish only for now.",
-      ft6h:"Private and offline",ft6p:"PIN-protected notes encrypted on your device. Works offline and syncs when you're back.",
-      pp1:"Pepi gets surprised when someone writes to you.",pp2:"Pepi celebrates your friends' birthdays.",pp3:"Pepi gets tired if you go for hours without a break.",
-      pp1a:"Pepi, Teire's mascot, surprised by a message from a friend",pp2a:"Pepi, Teire's mascot, celebrating a birthday",pp3a:"Pepi, Teire's mascot, looking tired",
+      role:"Full-Stack Developer",
+      hero_p:"I build the whole system and ship it for real people to use.",
+      feat_h:"What I built in Teire",
+      ft1h:"Cross-platform app",ft1p:"One app for Windows, Linux, Android and iPhone, with a desktop island on Windows.",
+      ft2h:"Real time",ft2p:"Lists, chat and a collaborative space where you see other people's changes instantly.",
+      ft3h:"Works offline",ft3p:"Runs without a connection and syncs the data when you're back.",
+      ft4h:"Privacy",ft4p:"PIN-protected notes encrypted on the device, with no ads or analytics.",
+      ft5h:"AI assistant",ft5p:"Teire AI creates, reminds and sends things by voice or text. Spanish only for now.",
+      ft6h:"Continuous delivery",ft6p:"I ship versions often and the app updates itself on every device.",
+      about_lead:"Programming technician and creator of Teire.",
       gh_text:"More code and projects on my GitHub.",gh_btn:"See GitHub",
       about_h:"About",about_p:"Paraná, Entre Ríos, Argentina.",
-      about_lead:"I build the whole system and ship it for real people to use.",
       about_body:"I hold a university technical degree in programming from UTN. I haven't worked at a software company yet, and I learned by building: university gave me the base, and Teire forced me to solve everything else, from the server to the installer.",
       nk1:"Studied",nv1:"University Technician in Programming, UTN",nk2:"Building",nk3:"Daily stack",nk4:"Learning",nv4:"Tauri, Supabase and data analysis with R",nk5:"Open to",nv5:"Full-time roles, freelance, collaborations and consulting",
       stack_h:"Stack",stack_p:"What I use for each part of a system.",
@@ -499,6 +495,12 @@ a.chip:not(.line):hover{background:var(--ink)}
     requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
+
+  /* ---------- nav name: hidden while the big name is on screen ---------- */
+  var bigName=document.querySelector('.hero h1');
+  if('IntersectionObserver' in window&&bigName){
+    new IntersectionObserver(function(es){document.body.classList.toggle('hero-in',es[0].isIntersecting);},{rootMargin:'-56px 0px 0px 0px'}).observe(bigName);
+  }
 
   /* ---------- clock, Parana ---------- */
   var clock=document.getElementById('clock');
