@@ -43,16 +43,25 @@ section[id]{scroll-margin-top:56px}
 .nav a:hover::after{transform:scaleX(1)}
 .nav .name{transition:opacity .3s}
 body.hero-in .nav .name{opacity:0;pointer-events:none}
+.nav .nav-cta{padding:8px 14px;font-size:13px;transition:opacity .3s,background .2s,color .2s}
+.nav a.chip::after{display:none}
+body.hero-in .nav .nav-cta{opacity:0;pointer-events:none}
 .lang{font:600 13px/1 var(--f);background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);border:0;border-radius:999px;padding:8px 12px;cursor:pointer;transition:background .2s,color .2s}
 .lang:hover{background:var(--ink);color:var(--paper)}
-@media (max-width:620px){.nav .links{font-size:13px}.nav .name{display:none}.nav{justify-content:flex-end}}
+@media (max-width:620px){.nav .links{font-size:13px}.nav .name{display:none}.nav{justify-content:flex-end}.nav .nav-cta{display:none}}
 
 /* hero */
 .hero{position:relative;min-height:clamp(560px,min(62cqw,calc(100svh - 56px)),760px);padding-block:clamp(16px,3cqw,32px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-bottom:1.5px solid var(--ink);background-image:repeating-linear-gradient(90deg,rgba(11,11,11,.08) 0 1px,transparent 1px calc(100%/12))}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-top,.hero-main,.hero-foot{position:relative}
 .hero-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:600;font-size:clamp(13px,1.5cqw,15px);pointer-events:none}
-.hero-top span:last-child{font-variant-numeric:tabular-nums}
+.hero-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px clamp(12px,2.4cqw,28px)}
+.hero-links a{pointer-events:auto;text-decoration:none}
+.hero-links a:hover{text-decoration:underline;text-underline-offset:3px}
+.avail{display:inline-flex;align-items:center;gap:8px;background:var(--vio);color:#fff;padding:7px 14px;border-radius:999px;font-weight:600;font-size:13px;pointer-events:none}
+.avail::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.avail::before{animation:none}}
 .hero-main{pointer-events:none}
 .hero h1{margin:0;font-weight:700;font-size:clamp(60px,14.6cqw,230px);line-height:.86;letter-spacing:-.06em}
 .hero .role{margin:clamp(14px,2cqw,26px) 0 0;font-size:clamp(22px,3.4cqw,50px);font-weight:600;letter-spacing:-.03em;line-height:1.05}
@@ -177,13 +186,14 @@ a.chip:not(.line):hover{background:var(--ink)}
       <a href="#proyectos" data-t="nav_proj">Proyectos</a>
       <a href="#stack" data-t="nav_stack">Stack</a>
       <a href="#contacto" data-t="nav_contact">Contacto</a>
+      <a class="chip nav-cta" href="#contacto" data-t="cta_contact">Contactarme</a>
       <button type="button" class="lang" id="lang" aria-label="Switch to English">EN</button>
     </span>
   </nav>
 
   <header class="hero pad" id="hero">
     <canvas id="dots" aria-hidden="true"></canvas>
-    <div class="hero-top"><span>Paraná, Entre Ríos</span><span>31.73 S, 60.53 O</span></div>
+    <div class="hero-top"><span>Paraná, Entre Ríos</span><span class="hero-links"><a href="https://github.com/codewtato" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/matias-d-agostino-291380357/" target="_blank" rel="noopener">LinkedIn</a><span class="avail" data-t="avail">Disponible para trabajar</span></span></div>
     <div class="hero-main">
       <h1>Matías<br>D'Agostino</h1>
       <p class="role" data-t="role">Desarrollador Full-Stack</p>
@@ -308,7 +318,7 @@ a.chip:not(.line):hover{background:var(--ink)}
     </section>
   </main>
 
-  <footer class="foot pad"><span data-t="foot_role">Matías D'Agostino, Desarrollador Full-Stack</span><span><span data-t="foot_city">Paraná</span> <span id="clock">--:--</span></span></footer>
+  <footer class="foot pad"><span data-t="foot_role">Matías D'Agostino, Desarrollador Full-Stack</span><span><span data-t="foot_city">Paraná</span> 31.73 S, 60.53 O <span id="clock">--:--</span></span></footer>
 </div>
 
 <script>
@@ -328,6 +338,7 @@ a.chip:not(.line):hover{background:var(--ink)}
       vid_alt:"La isla de Teire en el escritorio de Windows, abriéndose y cambiando de pestaña",vid_pause:"Pausar video",vid_play:"Reanudar video",
       s1:"descargas de instaladores en GitHub",s2:"versiones publicadas en 4 semanas",s3:"sistemas: Windows, Linux, Android e iPhone",s4:"publicidad, analíticas o venta de datos",
       role:"Desarrollador Full-Stack",
+      avail:"Disponible para trabajar",
       hero_p:"Programo el sistema completo y lo publico para que lo use gente.",
       feat_h:"Lo que construí en Teire",
       ft1h:"App multiplataforma",ft1p:"Una sola app para Windows, Linux, Android e iPhone, con una isla de escritorio en Windows.",
@@ -364,6 +375,7 @@ a.chip:not(.line):hover{background:var(--ink)}
       vid_alt:"Teire's island on the Windows desktop, opening and switching tabs",vid_pause:"Pause video",vid_play:"Play video",
       s1:"installer downloads on GitHub",s2:"releases shipped in 4 weeks",s3:"systems: Windows, Linux, Android and iPhone",s4:"ads, analytics or data sales",
       role:"Full-Stack Developer",
+      avail:"Available for work",
       hero_p:"I build the whole system and ship it for real people to use.",
       feat_h:"What I built in Teire",
       ft1h:"Cross-platform app",ft1p:"One app for Windows, Linux, Android and iPhone, with a desktop island on Windows.",
